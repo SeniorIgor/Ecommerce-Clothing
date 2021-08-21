@@ -1,12 +1,6 @@
-interface Section {
-  id: number;
-  title: string;
-  imageUrl: string;
-  linkUrl: string;
-  size?: 'large';
-}
+import { IMenuItem } from '../../models/menu-item';
 
-export const data: Section[] = [
+export const directory: IMenuItem[] = [
   {
     id: 1,
     title: 'hats',

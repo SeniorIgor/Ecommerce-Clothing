@@ -1,13 +1,16 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import { Home } from './pages/home';
+import { Shop } from './pages/shop';
 
-import Style from './App.module.scss';
+import './App.scss';
 
 export const App: React.FC = () => {
   return (
-    <div className={Style.container}>
-      <Home />
-    </div>
+    <Switch>
+      <Route path="/" component={Home} exact />
+      <Route path="/shop" component={Shop} exact />
+    </Switch>
   );
 };
