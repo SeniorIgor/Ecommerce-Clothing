@@ -1,35 +1,36 @@
 import {
   useState,
-  memo,
   FC,
-  FormEventHandler,
-  ChangeEventHandler,
   Fragment,
+  ChangeEventHandler,
+  FormEventHandler,
 } from 'react';
 
-import { FormInput } from '../form-input';
 import { Button } from '../button';
+import { FormInput } from '../form-input';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase';
+import { auth, createUserProfileDocument } from '../../firebase/firebase';
 
-import { signInData } from '../../data/auth/sign-in';
+import { signUpData } from '../../data/auth/sign-up';
 
-import Style from './sign-in.module.scss';
+import Style from './sign-up.module.scss';
 
 type HandleChange = ChangeEventHandler<HTMLInputElement>;
 type HandleSubmit = FormEventHandler<HTMLFormElement>;
-interface SignInState {
+interface SignUpState {
+  displayName: string;
   email: string;
   password: string;
+  confirmPassword: string;
   [fieldProp: string]: string;
 }
 
-const initialState = signInData.reduce(
+const initialState = signUpData.reduce(
   (res, { name }) => ({ ...res, [name]: '' }),
-  {} as SignInState
+  {} as SignUpState
 );
 
-const SignIn: FC = memo(() => {
+export const SignUp: FC = () => {
   const [state, setState] = useState(initialState);
 
   const handleChange: HandleChange = (event) => {
@@ -41,10 +42,20 @@ const SignIn: FC = memo(() => {
   const handleSubmit: HandleSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password } = state;
+    const { displayName, email, password, confirmPassword } = state;
+
+    if (password !== confirmPassword) {
+      console.log("passwords don't match");
+      return;
+    }
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserProfileDocument(user!, { displayName });
 
       setState(initialState);
     } catch (error) {
@@ -52,7 +63,7 @@ const SignIn: FC = memo(() => {
     }
   };
 
-  const fieldsView = signInData.map(({ id, name, ...otherProps }) => (
+  const fieldsView = signUpData.map(({ id, name, ...otherProps }) => (
     <Fragment key={id}>
       <FormInput
         name={name}
@@ -65,21 +76,16 @@ const SignIn: FC = memo(() => {
 
   return (
     <div className={Style.container}>
-      <h2 className={Style.title}>I&nbsp;already have account</h2>
-      <span>Sign in&nbsp;with your email and password</span>
+      <h2 className={Style.title}>I&nbsp;do not have a&nbsp;account</h2>
+      <span>Sign up&nbsp;with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         {fieldsView}
 
         <div className={Style.buttons}>
-          <Button type="submit">Sign in</Button>
-          <Button onClick={signInWithGoogle} isGoogleSignIn>
-            Sign in with Google
-          </Button>
+          <Button type="submit">Sign up</Button>
         </div>
       </form>
     </div>
   );
-});
-
-export { SignIn };
+};

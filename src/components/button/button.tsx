@@ -1,12 +1,22 @@
-import { ButtonHTMLAttributes, FC, HtmlHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
+import classNames from 'classnames';
 
 import Style from './button.module.scss';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isGoogleSignIn?: boolean;
+}
 
-export const Button: FC<ButtonProps> = ({ children, ...otherProps }) => {
+export const Button: FC<ButtonProps> = ({
+  children,
+  isGoogleSignIn,
+  ...otherProps
+}) => {
   return (
-    <button className={Style.button} {...otherProps}>
+    <button
+      className={classNames(Style.button, isGoogleSignIn && Style.google)}
+      {...otherProps}
+    >
       {children}
     </button>
   );
