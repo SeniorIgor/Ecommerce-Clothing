@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/images/crown.svg';
 
-import { auth } from '../../firebase/firebase';
-
-import { User } from '../../models/user';
+import { auth } from '../../firebase';
+import { useTypedSelector } from '../../hooks';
+import { selectUser } from '../../selectors';
 
 import Style from './header.module.scss';
 
-interface HeaderProps {
-  user: User | null;
-}
-
-export const Header: FC<HeaderProps> = memo(({ user }) => {
+export const Header: FC = memo(() => {
   const handleClick: MouseEventHandler<HTMLDivElement> = () => auth.signOut();
+  const user = useTypedSelector(selectUser);
 
   return (
     <div className={Style.container}>

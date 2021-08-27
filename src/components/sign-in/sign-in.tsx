@@ -10,7 +10,7 @@ import {
 import { FormInput } from '../form-input';
 import { Button } from '../button';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase';
+import { auth, signInWithGoogle } from '../../firebase';
 
 import { signInData } from '../../data/auth/sign-in';
 
@@ -73,7 +73,7 @@ const SignIn: FC = memo(() => {
 
         <div className={Style.buttons}>
           <Button type="submit">Sign in</Button>
-          <Button onClick={signInWithGoogle} isGoogleSignIn>
+          <Button type="button" onClick={signInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </Button>
         </div>

@@ -9,14 +9,16 @@ import { Header } from './layout/header';
 
 import { User } from './models/user';
 
-import firebase, { auth, createUserProfileDocument } from './firebase/firebase';
+import firebase, { auth, createUserProfileDocument } from './firebase';
+
+import { useActions } from './hooks';
 
 import './App.scss';
 
 interface UserWithoutId extends Omit<User, 'id'> {}
 
 export const App: FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const { setCurrentUser } = useActions();
   const unsubscribe = useRef<firebase.Unsubscribe | null>(null);
 
   useEffect(() => {
@@ -25,22 +27,22 @@ export const App: FC = () => {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef!.onSnapshot((snapShot) => {
-          setUser({
+          setCurrentUser({
             id: snapShot.id,
             ...(snapShot.data() as UserWithoutId),
           });
         });
       } else {
-        setUser(userAuth);
+        setCurrentUser(userAuth);
       }
     });
 
     return () => unsubscribe.current!();
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <>
-      <Header user={user} />
+      <Header />
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} exact />

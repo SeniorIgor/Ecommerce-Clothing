@@ -9,7 +9,7 @@ import {
 import { Button } from '../button';
 import { FormInput } from '../form-input';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase';
+import { auth, createUserProfileDocument } from '../../firebase';
 
 import { signUpData } from '../../data/auth/sign-up';
 
