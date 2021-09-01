@@ -3,18 +3,22 @@ import classNames from 'classnames';
 
 import Style from './button.module.scss';
 
+type Theme = 'google' | 'light' | '';
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isGoogleSignIn?: boolean;
+  theme?: Theme;
+  className?: string;
 }
 
 export const Button: FC<ButtonProps> = ({
   children,
-  isGoogleSignIn,
+  theme = '',
+  className = '',
   ...otherProps
 }) => {
   return (
     <button
-      className={classNames(Style.button, isGoogleSignIn && Style.google)}
+      className={classNames(Style.button, Style[theme], className)}
       {...otherProps}
     >
       {children}

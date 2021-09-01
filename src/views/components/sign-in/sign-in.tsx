@@ -84,7 +84,7 @@ const SignIn: FC = memo(() => {
 
         <div className={Style.buttons}>
           <Button type="submit">Sign in</Button>
-          <Button type="button" onClick={handleClick} isGoogleSignIn>
+          <Button type="button" onClick={handleClick} theme="google">
             Sign in with Google
           </Button>
         </div>

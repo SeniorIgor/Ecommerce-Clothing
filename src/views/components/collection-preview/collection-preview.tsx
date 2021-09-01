@@ -17,9 +17,7 @@ export const CollectionPreview: React.FC<CollectionPreviewProps> = memo(
       () =>
         items
           .filter((_, idx) => idx < 4)
-          .map(({ id, ...otherProps }) => (
-            <CollectionItem {...otherProps} key={id} />
-          )),
+          .map((item) => <CollectionItem item={item} key={item.id} />),
       [items]
     );
 
