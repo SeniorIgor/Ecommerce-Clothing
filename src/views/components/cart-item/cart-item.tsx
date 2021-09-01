@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { CartItemProps } from './cart-item.types';
 
 import Style from './cart-item.module.scss';
 
-export const CartItem: FC<CartItemProps> = ({ item }) => {
+export const CartItem: FC<CartItemProps> = memo(({ item }) => {
   const { name, price, quantity, imageUrl } = item;
 
   return (
@@ -18,4 +18,4 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
       </div>
     </div>
   );
-};
+});

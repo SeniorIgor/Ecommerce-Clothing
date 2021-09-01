@@ -1,17 +1,12 @@
-import React, { useMemo, memo } from 'react';
+import { FC, useMemo, memo } from 'react';
 
 import { CollectionItem } from '../collection-item';
 
-import { CollectionItem as ICollectionItem } from '../../../models/collection';
+import { CollectionPreviewProps } from './collection-preview.types';
 
 import Style from './collection-preview.module.scss';
 
-interface CollectionPreviewProps {
-  title: string;
-  items: ICollectionItem[];
-}
-
-export const CollectionPreview: React.FC<CollectionPreviewProps> = memo(
+export const CollectionPreview: FC<CollectionPreviewProps> = memo(
   ({ title, items }) => {
     const preview = useMemo(
       () =>

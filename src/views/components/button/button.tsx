@@ -1,14 +1,9 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { FC } from 'react';
 import classNames from 'classnames';
 
+import { ButtonProps } from './button.types';
+
 import Style from './button.module.scss';
-
-type Theme = 'google' | 'light' | '';
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  theme?: Theme;
-  className?: string;
-}
 
 export const Button: FC<ButtonProps> = ({
   children,

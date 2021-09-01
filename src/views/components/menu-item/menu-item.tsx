@@ -1,4 +1,4 @@
-import React, { memo, MouseEventHandler } from 'react';
+import { FC, MouseEventHandler, memo } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -12,7 +12,7 @@ const defaultProps = {
   size: undefined,
 };
 
-const MenuItem: React.FC<MenuItemProps> = memo(
+const MenuItem: FC<MenuItemProps> = memo(
   ({ title, imageUrl, size, linkUrl }) => {
     const history = useHistory();
     const match = useRouteMatch();

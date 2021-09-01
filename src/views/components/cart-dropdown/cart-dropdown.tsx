@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useMemo, memo } from 'react';
 
 import { Button } from '../button';
 import { CartItem } from '../cart-item';
@@ -8,7 +8,7 @@ import { selectors } from '../../../state';
 
 import Style from './cart-dropdown.module.scss';
 
-export const CartDropdown: FC = () => {
+export const CartDropdown: FC = memo(() => {
   const { selectCartItems } = selectors.cart;
   const items = useTypedSelector(selectCartItems);
 
@@ -22,4 +22,4 @@ export const CartDropdown: FC = () => {
       <Button>Go to checkout</Button>
     </div>
   );
-};
+});
