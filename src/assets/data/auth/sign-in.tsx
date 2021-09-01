@@ -1,4 +1,4 @@
-import { AuthField } from '../../../models/auth-field';
+import { AuthField } from '../../../models';
 
 export const signInData: AuthField[] = [
   {

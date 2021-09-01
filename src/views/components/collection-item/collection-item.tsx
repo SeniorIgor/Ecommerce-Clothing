@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 
-import { useActions } from '../../hooks/use-actions';
+import { useActions } from '../../hooks';
 
-import { ICollectionItem } from '../../../models/collection';
+import { CollectionItem as ICollectionItem } from '../../../models';
 import { Button } from '../button';
 
 import Style from './collection-item.module.scss';

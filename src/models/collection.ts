@@ -1,4 +1,4 @@
-export interface ICollectionItem {
+export interface CollectionItem {
   id: number;
   name: string;
   imageUrl: string;
@@ -9,5 +9,5 @@ export interface ICollection {
   id: number;
   title: string;
   routeName: string;
-  items: ICollectionItem[];
+  items: CollectionItem[];
 }

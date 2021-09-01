@@ -1,4 +1,4 @@
-import { ICollectionItem } from '../../../models';
+import { CollectionItem } from '../../../models';
 
 import { Types } from './types';
 import { Action } from '../actions';
@@ -11,7 +11,7 @@ const initialState: CartState = {
   items: [],
 };
 
-const addItem = (state: CartState, newItem: ICollectionItem) => {
+const addItem = (state: CartState, newItem: CollectionItem) => {
   return {
     ...state,
     items: addItemToCart(state.items, newItem),

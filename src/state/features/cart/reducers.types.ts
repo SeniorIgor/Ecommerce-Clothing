@@ -1,9 +1,4 @@
-import { ICollectionItem } from '../../../models';
-
-export interface CartItem extends ICollectionItem {
-  quantity: number;
-}
-
+import { CartItem } from '../../../models';
 export interface CartState {
   hidden: boolean;
   items: CartItem[];

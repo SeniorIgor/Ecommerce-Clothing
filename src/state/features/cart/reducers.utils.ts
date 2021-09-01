@@ -1,11 +1,6 @@
-import { ICollectionItem } from '../../../models';
+import { CollectionItem, CartItem } from '../../../models';
 
-import { CartItem } from './reducers.types';
-
-type AddItemToCart = (
-  items: CartItem[],
-  newItem: ICollectionItem
-) => CartItem[];
+type AddItemToCart = (items: CartItem[], newItem: CollectionItem) => CartItem[];
 
 export const addItemToCart: AddItemToCart = (items, newItem) => {
   const cartItem = items.find(({ id }) => id === newItem.id);

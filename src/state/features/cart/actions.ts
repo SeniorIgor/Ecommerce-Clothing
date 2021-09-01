@@ -1,4 +1,4 @@
-import { ICollectionItem } from '../../../models';
+import { CollectionItem } from '../../../models';
 
 import { Types } from './types';
 
@@ -8,7 +8,7 @@ export interface ToggleCartHidden {
 
 export interface AddItem {
   type: Types.ADD_ITEM;
-  payload: ICollectionItem;
+  payload: CollectionItem;
 }
 
 export type Actions = ToggleCartHidden | AddItem;

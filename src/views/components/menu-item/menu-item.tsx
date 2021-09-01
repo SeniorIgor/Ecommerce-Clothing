@@ -2,7 +2,7 @@ import React, { memo, MouseEventHandler } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { IMenuItem } from '../../../models/menu-item';
+import { IMenuItem } from '../../../models';
 
 import Style from './menu-item.module.scss';
 

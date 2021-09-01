@@ -2,7 +2,7 @@ import React, { useMemo, memo } from 'react';
 
 import { CollectionItem } from '../collection-item';
 
-import { ICollectionItem } from '../../../models/collection';
+import { CollectionItem as ICollectionItem } from '../../../models/collection';
 
 import Style from './collection-preview.module.scss';
 

@@ -1,4 +1,4 @@
-import { IMenuItem } from '../../../models/menu-item';
+import { IMenuItem } from '../../../models';
 
 export const directory: IMenuItem[] = [
   {

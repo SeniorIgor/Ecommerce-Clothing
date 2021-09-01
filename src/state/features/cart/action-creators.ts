@@ -1,4 +1,4 @@
-import { ICollectionItem } from './../../../models';
+import { CollectionItem } from './../../../models';
 import { Types } from './types';
 
 import { ToggleCartHidden, AddItem } from './actions';
@@ -9,7 +9,7 @@ export const toggleCartHidden = (): ToggleCartHidden => {
   };
 };
 
-export const addItem = (item: ICollectionItem): AddItem => {
+export const addItem = (item: CollectionItem): AddItem => {
   return {
     type: Types.ADD_ITEM,
     payload: item,
