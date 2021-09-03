@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Home } from '../pages/home';
 import { Shop } from '../pages/shop';
 import { Auth } from '../pages/auth';
+import { Checkout } from '../pages/checkout';
 
 import { Header } from '../components/header';
 
@@ -22,6 +23,7 @@ export const App: FC = () => {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} exact />
+        <Route path="/checkout" component={Checkout} exact />
         <Route path="/auth" component={Auth}>
           {user ? <Redirect to="/" /> : <Auth />}
         </Route>

@@ -12,16 +12,14 @@ import { ReactComponent as Logo } from '../../../assets/images/crown.svg';
 
 import Style from './header.module.scss';
 
-const {
-  user: { selectUser },
-  cart: { selectCartHidden },
-} = selectors;
+const { selectCartHidden } = selectors.cart;
+const { selectUser } = selectors.user;
 
 export const Header: FC = memo(() => {
   const handleClick: MouseEventHandler<HTMLDivElement> = () => auth.signOut();
 
-  const user = useTypedSelector(selectUser);
   const hidden = useTypedSelector(selectCartHidden);
+  const user = useTypedSelector(selectUser);
 
   return (
     <div className={Style.container}>
