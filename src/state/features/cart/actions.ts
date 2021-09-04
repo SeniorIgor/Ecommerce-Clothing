@@ -1,4 +1,4 @@
-import { CollectionItem } from '../../../models';
+import { CollectionItem, CartItem } from '../../../models';
 
 import { Types } from './types';
 
@@ -6,9 +6,23 @@ export interface ToggleCartHidden {
   type: Types.TOGGLE_CART_HIDDEN;
 }
 
-export interface AddItem {
-  type: Types.ADD_ITEM;
-  payload: CollectionItem;
+export interface AddCartItem {
+  type: Types.ADD_CART_ITEM;
+  payload: CollectionItem | CartItem;
 }
 
-export type Actions = ToggleCartHidden | AddItem;
+export interface RemoveCartItem {
+  type: Types.REMOVE_CART_ITEM;
+  payload: CartItem;
+}
+
+export interface ClearCartItem {
+  type: Types.CLEAR_CART_ITEM;
+  payload: CartItem;
+}
+
+export type Actions =
+  | ToggleCartHidden
+  | AddCartItem
+  | RemoveCartItem
+  | ClearCartItem;

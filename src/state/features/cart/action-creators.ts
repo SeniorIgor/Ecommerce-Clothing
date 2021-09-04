@@ -1,17 +1,33 @@
-import { CollectionItem } from './../../../models';
+import { CartItem, CollectionItem } from './../../../models';
 import { Types } from './types';
 
-import { ToggleCartHidden, AddItem } from './actions';
+import * as Actions from './actions';
 
-export const toggleCartHidden = (): ToggleCartHidden => {
+export const toggleCartHidden = (): Actions.ToggleCartHidden => {
   return {
     type: Types.TOGGLE_CART_HIDDEN,
   };
 };
 
-export const addItem = (item: CollectionItem): AddItem => {
+export const addCartItem = (
+  item: CartItem | CollectionItem
+): Actions.AddCartItem => {
   return {
-    type: Types.ADD_ITEM,
+    type: Types.ADD_CART_ITEM,
+    payload: item,
+  };
+};
+
+export const removeCartItem = (item: CartItem): Actions.RemoveCartItem => {
+  return {
+    type: Types.REMOVE_CART_ITEM,
+    payload: item,
+  };
+};
+
+export const clearCartItem = (item: CartItem): Actions.ClearCartItem => {
+  return {
+    type: Types.CLEAR_CART_ITEM,
     payload: item,
   };
 };

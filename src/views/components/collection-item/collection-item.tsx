@@ -9,7 +9,7 @@ import { CollectionItemProps } from './collection-item.types';
 import Style from './collection-item.module.scss';
 
 export const CollectionItem: FC<CollectionItemProps> = memo(({ item }) => {
-  const { addItem } = useActions();
+  const { addCartItem } = useActions();
   const { name, price, imageUrl } = item;
 
   const backgroundImage = `url(${imageUrl})`;
@@ -24,7 +24,7 @@ export const CollectionItem: FC<CollectionItemProps> = memo(({ item }) => {
       <Button
         className={Style.button}
         theme="light"
-        onClick={() => addItem(item)}
+        onClick={() => addCartItem(item)}
       >
         Add to cart
       </Button>
