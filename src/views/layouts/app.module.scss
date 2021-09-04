@@ -1,6 +1,5 @@
 body {
   font-family: 'Open Sans Condensed';
-  padding: 20px 60px;
 }
 
 a {
@@ -10,4 +9,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.container {
+  padding: 20px 60px;
 }

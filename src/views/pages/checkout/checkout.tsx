@@ -1,5 +1,7 @@
 import { FC, memo } from 'react';
 
+import { CheckoutItem } from '../../components/checkout-item';
+
 import { useTypedSelector } from '../../hooks/use-typed-selector';
 import { selectors } from '../../../state';
 
@@ -13,7 +15,9 @@ export const Checkout: FC = memo(() => {
   const items = useTypedSelector(selectCartItems);
   const total = useTypedSelector(selectCartTotal);
 
-  const itemsView = items.map((item) => <div>{item.name}</div>);
+  const itemsView = items.map((item) => (
+    <CheckoutItem item={item} key={item.id} />
+  ));
 
   const headerView = data.map(({ id, title }) => (
     <div className={Style.headerColumn} key={id}>

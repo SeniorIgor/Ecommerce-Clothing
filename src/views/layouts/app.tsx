@@ -12,13 +12,13 @@ import { useTypedSelector } from '../hooks/use-typed-selector';
 
 import { selectUser } from '../../state/features/user/selectors';
 
-import './app.scss';
+import Style from './app.module.scss';
 
 export const App: FC = () => {
   const user = useTypedSelector(selectUser);
 
   return (
-    <>
+    <div className={Style.container}>
       <Header />
       <Switch>
         <Route path="/" component={Home} exact />
@@ -28,6 +28,6 @@ export const App: FC = () => {
           {user ? <Redirect to="/" /> : <Auth />}
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };

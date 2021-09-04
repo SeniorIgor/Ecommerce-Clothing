@@ -7,8 +7,8 @@
   padding: 20px;
   border: 1px solid black;
   background-color: white;
-  top: 90px;
-  right: 40px;
+  top: 60px;
+  right: 0;
   z-index: 5;
 
   .message {
@@ -20,7 +20,6 @@
   .cartItemsContainer {
     height: 240px;
     width: 100%;
-    overflow-y: auto;
   }
 
   .cartItems {
