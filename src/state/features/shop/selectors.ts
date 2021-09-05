@@ -2,22 +2,17 @@ import { createSelector } from 'reselect';
 
 import { RootState } from '../../reducer';
 
-const collectionMap: { [key: string]: number } = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  womens: 4,
-  mens: 5,
-};
-
 const selectShopReducer = (state: RootState) => state.shop;
 
-export const selectShopCollections = createSelector(
+export const selectCollections = createSelector(
   selectShopReducer,
   (shop) => shop.collections
 );
 
+export const selectCollectionsAsArray = createSelector(
+  selectCollections,
+  (collections) => Object.values(collections)
+);
+
 export const selectCollection = (urlParam: string) =>
-  createSelector(selectShopCollections, (collections) =>
-    collections.find(({ id }) => id === collectionMap[urlParam])
-  );
+  createSelector(selectCollections, (collections) => collections[urlParam]);

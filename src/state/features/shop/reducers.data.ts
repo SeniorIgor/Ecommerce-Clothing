@@ -1,7 +1,7 @@
-import { Collection } from '../../../models/collection';
+import { CollectionList } from './reducers.types';
 
-export const collections: Collection[] = [
-  {
+export const collections: CollectionList = {
+  hats: {
     id: 1,
     title: 'Hats',
     routeName: 'hats',
@@ -62,7 +62,7 @@ export const collections: Collection[] = [
       },
     ],
   },
-  {
+  sneakers: {
     id: 2,
     title: 'Sneakers',
     routeName: 'sneakers',
@@ -117,7 +117,7 @@ export const collections: Collection[] = [
       },
     ],
   },
-  {
+  jackets: {
     id: 3,
     title: 'Jackets',
     routeName: 'jackets',
@@ -154,7 +154,7 @@ export const collections: Collection[] = [
       },
     ],
   },
-  {
+  womens: {
     id: 4,
     title: 'Womens',
     routeName: 'womens',
@@ -203,7 +203,7 @@ export const collections: Collection[] = [
       },
     ],
   },
-  {
+  mens: {
     id: 5,
     title: 'Mens',
     routeName: 'mens',
@@ -246,4 +246,4 @@ export const collections: Collection[] = [
       },
     ],
   },
-];
+};

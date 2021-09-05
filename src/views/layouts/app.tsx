@@ -7,12 +7,14 @@ import { Auth } from '../pages/auth';
 import { Checkout } from '../pages/checkout';
 
 import { Header } from '../components/header';
+import { NotFound } from '../pages/not-found';
 
-import { useTypedSelector } from '../hooks/use-typed-selector';
-
-import { selectUser } from '../../state/features/user/selectors';
+import { useTypedSelector } from '../hooks';
+import { selectors } from '../../state';
 
 import Style from './app.module.scss';
+
+const { selectUser } = selectors.user;
 
 export const App: FC = () => {
   const user = useTypedSelector(selectUser);
@@ -27,6 +29,8 @@ export const App: FC = () => {
         <Route path="/auth" component={Auth}>
           {user ? <Redirect to="/" /> : <Auth />}
         </Route>
+
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

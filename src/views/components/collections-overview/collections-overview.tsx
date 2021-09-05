@@ -7,10 +7,10 @@ import { selectors } from '../../../state';
 
 import Style from './collections-overview.module.scss';
 
-const { selectShopCollections } = selectors.shop;
+const { selectCollectionsAsArray } = selectors.shop;
 
 export const CollectionsOverview: FC = () => {
-  const collections = useTypedSelector(selectShopCollections);
+  const collections = useTypedSelector(selectCollectionsAsArray);
 
   const collectionsView = useMemo(
     () =>
