@@ -2,11 +2,9 @@ import { FC, MouseEventHandler, memo } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { IMenuItem } from '../../../models';
+import { MenuItemProps } from './menu-item.types';
 
 import Style from './menu-item.module.scss';
-
-interface MenuItemProps extends Omit<IMenuItem, 'id'> {}
 
 const defaultProps = {
   size: undefined,

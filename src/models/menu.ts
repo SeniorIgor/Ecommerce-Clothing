@@ -1,4 +1,4 @@
-export interface IMenuItem {
+export interface MenuItem {
   id: number;
   title: string;
   imageUrl: string;

@@ -1,6 +1,6 @@
-import { ICollection } from '../../../models/collection';
+import { Collection } from '../../../models/collection';
 
-export const collections: ICollection[] = [
+export const collections: Collection[] = [
   {
     id: 1,
     title: 'Hats',

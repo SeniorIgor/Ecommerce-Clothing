@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { CollectionPreview } from '../../components/collection-preview';
 
-import { collections as collectionsData } from '../../../assets/data/shop/collections';
+import { useTypedSelector } from '../../hooks';
+import { selectors } from '../../../state';
 
 import Style from './shop.module.scss';
 
+const { selectShopCollections } = selectors.shop;
+
 export const Shop: React.FC = () => {
-  const [collections] = useState(collectionsData);
+  const collections = useTypedSelector(selectShopCollections);
 
   return (
     <div className={Style.container}>

@@ -5,7 +5,7 @@ export interface CollectionItem {
   price: number;
 }
 
-export interface ICollection {
+export interface Collection {
   id: number;
   title: string;
   routeName: string;

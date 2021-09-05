@@ -1,13 +1,16 @@
-import { FC, useState, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { MenuItem } from '../menu-item';
 
-import { directory } from '../../../assets/data/home/directory';
+import { useTypedSelector } from '../../hooks';
+import { selectors } from '../../../state';
 
 import Style from './directory.module.scss';
 
+const { selectSections } = selectors.directory;
+
 export const Directory: FC = memo(() => {
-  const [sections] = useState(directory);
+  const sections = useTypedSelector(selectSections);
 
   return (
     <div className={Style.container}>
