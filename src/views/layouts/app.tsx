@@ -22,7 +22,7 @@ export const App: FC = () => {
       <Header />
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/shop" component={Shop} exact />
+        <Route path="/shop" component={Shop} />
         <Route path="/checkout" component={Checkout} exact />
         <Route path="/auth" component={Auth}>
           {user ? <Redirect to="/" /> : <Auth />}

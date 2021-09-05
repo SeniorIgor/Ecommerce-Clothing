@@ -1,22 +1,19 @@
-import React from 'react';
+import { FC, memo } from 'react';
+import { Route, RouteComponentProps } from 'react-router-dom';
 
-import { CollectionPreview } from '../../components/collection-preview';
+import { CollectionsOverview } from '../../components/collections-overview';
 
-import { useTypedSelector } from '../../hooks';
-import { selectors } from '../../../state';
+import { Collection } from '../collection';
 
 import Style from './shop.module.scss';
 
-const { selectShopCollections } = selectors.shop;
+interface ShopProps extends RouteComponentProps {}
 
-export const Shop: React.FC = () => {
-  const collections = useTypedSelector(selectShopCollections);
-
+export const Shop: FC<ShopProps> = memo(({ match }) => {
   return (
     <div className={Style.container}>
-      {collections.map(({ id, ...otherProps }) => (
-        <CollectionPreview {...otherProps} key={id} />
-      ))}
+      <Route path={`${match.path}`} component={CollectionsOverview} exact />
+      <Route path={`${match.path}/:collectionId`} component={Collection} />
     </div>
   );
-};
+});
