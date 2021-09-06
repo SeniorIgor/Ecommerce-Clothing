@@ -39,7 +39,7 @@ export const Checkout: FC = memo(() => {
         rel="noreferrer"
       >
         *Please use the following test credit card for payments* <br />
-        4242 4242 4242 4242&nbsp;&mdash; Exp: 01/22&nbsp;&mdash; CVV: 123 <br />
+        4242 4242 4242 4242&nbsp;&mdash; Exp: 01/25&nbsp;&mdash; CVV: 123 <br />
       </a>
       <StripeButton price={total} />
     </div>
