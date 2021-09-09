@@ -4,7 +4,7 @@ import { CollectionItem } from '../collection-item';
 
 import { CollectionPreviewProps } from './collection-preview.types';
 
-import Style from './collection-preview.module.scss';
+import { Container, Title, Preview } from './collection-preview.styles';
 
 export const CollectionPreview: FC<CollectionPreviewProps> = memo(
   ({ title, items }) => {
@@ -17,10 +17,10 @@ export const CollectionPreview: FC<CollectionPreviewProps> = memo(
     );
 
     return (
-      <div className={Style.container}>
-        <h1 className={Style.title}>{title}</h1>
-        <div className={Style.preview}>{preview}</div>
-      </div>
+      <Container>
+        <Title>{title}</Title>
+        <Preview>{preview}</Preview>
+      </Container>
     );
   }
 );

@@ -1,5 +1,4 @@
 import { FC, MouseEventHandler, memo } from 'react';
-import { Link } from 'react-router-dom';
 
 import { auth } from '../../../firebase';
 import { selectors } from '../../../state';
@@ -10,7 +9,12 @@ import { CartDropdown } from '../cart-dropdown';
 
 import { ReactComponent as Logo } from '../../../assets/images/crown.svg';
 
-import Style from './header.module.scss';
+import {
+  Container,
+  LogoContainer,
+  OptionLink,
+  OptionsContainer,
+} from './header.styles';
 
 const { selectCartHidden } = selectors.cart;
 const { selectUser } = selectors.user;
@@ -22,29 +26,24 @@ export const Header: FC = memo(() => {
   const user = useTypedSelector(selectUser);
 
   return (
-    <div className={Style.container}>
-      <Link to="/" className={Style.logoContainer}>
-        <Logo className={Style.logo} />
-      </Link>
-      <div className={Style.options}>
-        <Link to="/shop" className={Style.option}>
-          shop
-        </Link>
-        <Link to="/contact" className={Style.option}>
-          contact
-        </Link>
+    <Container>
+      <LogoContainer to="/">
+        <Logo />
+      </LogoContainer>
+
+      <OptionsContainer>
+        <OptionLink to="/shop">shop</OptionLink>
+        <OptionLink to="/contact">contact</OptionLink>
         {user ? (
-          <div className={Style.option} onClick={handleClick}>
+          <OptionLink as="div" onClick={handleClick}>
             Sign out
-          </div>
+          </OptionLink>
         ) : (
-          <Link to="/auth" className={Style.option}>
-            Sign in
-          </Link>
+          <OptionLink to="/auth">Sign in</OptionLink>
         )}
         <CartIcon />
-      </div>
+      </OptionsContainer>
       {!hidden && <CartDropdown />}
-    </div>
+    </Container>
   );
 });

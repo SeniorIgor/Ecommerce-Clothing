@@ -1,12 +1,4 @@
-import {
-  useState,
-  memo,
-  FC,
-  Fragment,
-  FormEventHandler,
-  ChangeEventHandler,
-  MouseEventHandler,
-} from 'react';
+import { useState, memo, FC, Fragment } from 'react';
 
 import { FormInput } from '../form-input';
 import { Button } from '../button';
@@ -15,16 +7,13 @@ import { signInData } from '../../../assets/data/auth/sign-in';
 
 import { useAuth } from '../../hooks/use-auth';
 
-import Style from './sign-in.module.scss';
-
-type HandleChange = ChangeEventHandler<HTMLInputElement>;
-type HandleSubmit = FormEventHandler<HTMLFormElement>;
-type HandleClick = MouseEventHandler<HTMLButtonElement>;
-interface SignInState {
-  email: string;
-  password: string;
-  [fieldProp: string]: string;
-}
+import {
+  SignInState,
+  HandleChange,
+  HandleClick,
+  HandleSubmit,
+} from './sign-in.types';
+import { Container, Title, ButtonsContainer } from './sign-in.styles';
 
 const initialState = signInData.reduce(
   (res, { name }) => ({ ...res, [name]: '' }),
@@ -75,21 +64,21 @@ const SignIn: FC = memo(() => {
   ));
 
   return (
-    <div className={Style.container}>
-      <h2 className={Style.title}>I&nbsp;already have account</h2>
+    <Container>
+      <Title>I&nbsp;already have account</Title>
       <span>Sign in&nbsp;with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         {fieldsView}
 
-        <div className={Style.buttons}>
+        <ButtonsContainer>
           <Button type="submit">Sign in</Button>
           <Button type="button" onClick={handleClick} theme="google">
             Sign in with Google
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </Container>
   );
 });
 

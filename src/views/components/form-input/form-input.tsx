@@ -1,30 +1,22 @@
 import { FC, memo } from 'react';
-import classNames from 'classnames';
 
 import { FormInputProps } from './form-input.types';
 
-import Style from './form-input.module.scss';
+import { Container, Input, Label } from './form-input.styles';
 
 export const FormInput: FC<FormInputProps> = memo(
   ({ handleChange, label, ...otherProps }) => {
     return (
-      <div className={Style.container}>
-        <input
-          onChange={handleChange}
-          className={Style.input}
-          {...otherProps}
-        />
+      <Container>
+        <Input onChange={handleChange} {...otherProps} />
         {label && (
-          <label
-            className={classNames(
-              otherProps.value?.toString().length && Style.shrink,
-              Style.label
-            )}
+          <Label
+            className={otherProps.value?.toString().length ? 'shrink' : ''}
           >
             {label}
-          </label>
+          </Label>
         )}
-      </div>
+      </Container>
     );
   }
 );

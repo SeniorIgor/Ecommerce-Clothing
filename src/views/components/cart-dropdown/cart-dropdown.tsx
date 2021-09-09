@@ -2,14 +2,20 @@ import { FC, useMemo, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import { Button } from '../button';
 import { CartItem } from '../cart-item';
 
 import { useActions, useTypedSelector } from '../../hooks';
 import { selectors } from '../../../state';
 
+import {
+  Container,
+  Message,
+  CartItemsContainer,
+  CartItems,
+  Button,
+} from './cart-dropdown.styles';
+
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import Style from './cart-dropdown.module.scss';
 
 type HandleClick = React.MouseEventHandler<HTMLButtonElement>;
 
@@ -35,17 +41,17 @@ export const CartDropdown: FC = memo(() => {
   }, [items]);
 
   return (
-    <div className={Style.container}>
-      <div className={Style.cartItemsContainer}>
+    <Container>
+      <CartItemsContainer>
         {items.length ? (
           <PerfectScrollbar options={scrollBarProps}>
-            <div className={Style.cartItems}>{itemsView}</div>
+            <CartItems>{itemsView}</CartItems>
           </PerfectScrollbar>
         ) : (
-          <span className={Style.message}>Your cart is empty</span>
+          <Message>Your cart is empty</Message>
         )}
-      </div>
+      </CartItemsContainer>
       <Button onClick={handleClick}>Go to checkout</Button>
-    </div>
+    </Container>
   );
 });

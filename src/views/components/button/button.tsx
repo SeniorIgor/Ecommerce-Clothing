@@ -1,9 +1,7 @@
 import { FC } from 'react';
-import classNames from 'classnames';
 
 import { ButtonProps } from './button.types';
-
-import Style from './button.module.scss';
+import { ButtonContainer } from './button.styles';
 
 export const Button: FC<ButtonProps> = ({
   children,
@@ -12,11 +10,8 @@ export const Button: FC<ButtonProps> = ({
   ...otherProps
 }) => {
   return (
-    <button
-      className={classNames(Style.button, Style[theme], className)}
-      {...otherProps}
-    >
+    <ButtonContainer theme={theme} className={className} {...otherProps}>
       {children}
-    </button>
+    </ButtonContainer>
   );
 };

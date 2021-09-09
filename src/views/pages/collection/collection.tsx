@@ -5,11 +5,14 @@ import { selectors } from '../../../state';
 
 import { NotFound } from '../not-found';
 
-import { CollectionItem } from '../../components/collection-item';
-
 import { CollectionProps } from './collection.types';
 
-import Style from './collection.module.scss';
+import {
+  Container,
+  Title,
+  ItemsContainer,
+  CollectionItem,
+} from './collection.styles';
 
 const { selectCollection } = selectors.shop;
 
@@ -24,17 +27,13 @@ export const Collection: FC<CollectionProps> = memo(({ match }) => {
   const { title, items } = collection;
 
   const itemsView = items.map((item) => (
-    <CollectionItem
-      item={item}
-      key={item.id}
-      className={Style.collectionItem}
-    />
+    <CollectionItem item={item} key={item.id} />
   ));
 
   return (
-    <div className={Style.container}>
-      <h1 className={Style.title}>{title}</h1>
-      <div className={Style.items}>{itemsView}</div>
-    </div>
+    <Container>
+      <Title>{title}</Title>
+      <ItemsContainer>{itemsView}</ItemsContainer>
+    </Container>
   );
 });

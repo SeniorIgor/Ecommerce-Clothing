@@ -8,7 +8,13 @@ import { selectors } from '../../../state';
 
 import { data } from './checkout.data';
 
-import Style from './checkout.module.scss';
+import {
+  Container,
+  HeaderContainer,
+  HeaderColumn,
+  Total,
+  Message,
+} from './checkout.styles';
 
 const { selectCartItems, selectCartTotal } = selectors.cart;
 
@@ -21,27 +27,26 @@ export const Checkout: FC = memo(() => {
   ));
 
   const headerView = data.map(({ id, title }) => (
-    <div className={Style.headerColumn} key={id}>
+    <HeaderColumn key={id}>
       <span>{title}</span>
-    </div>
+    </HeaderColumn>
   ));
 
   return (
-    <div className={Style.container}>
-      <div className={Style.header}>{headerView}</div>
+    <Container>
+      <HeaderContainer>{headerView}</HeaderContainer>
       {itemsView}
 
-      <div className={Style.total}>Total: ${total}</div>
-      <a
-        className={Style.message}
+      <Total>Total: ${total}</Total>
+      <Message
         href="https://stripe.com/docs/testing#cards"
         target="_blank"
         rel="noreferrer"
       >
         *Please use the following test credit card for payments* <br />
         4242 4242 4242 4242&nbsp;&mdash; Exp: 01/25&nbsp;&mdash; CVV: 123 <br />
-      </a>
+      </Message>
       <StripeButton price={total} />
-    </div>
+    </Container>
   );
 });

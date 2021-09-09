@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Directory } from '../../components/directory';
 
-import Style from './home.module.scss';
+import { Container } from './home.styles';
 
 export const Home: React.FC = () => {
   return (
-    <div className={Style.container}>
+    <Container>
       <Directory />
-    </div>
+    </Container>
   );
 };

@@ -1,10 +1,4 @@
-import {
-  useState,
-  FC,
-  Fragment,
-  ChangeEventHandler,
-  FormEventHandler,
-} from 'react';
+import { useState, FC, Fragment } from 'react';
 
 import { Button } from '../button';
 import { FormInput } from '../form-input';
@@ -13,17 +7,8 @@ import { useAuth } from '../../hooks/use-auth';
 
 import { signUpData } from '../../../assets/data/auth/sign-up';
 
-import Style from './sign-up.module.scss';
-
-type HandleChange = ChangeEventHandler<HTMLInputElement>;
-type HandleSubmit = FormEventHandler<HTMLFormElement>;
-interface SignUpState {
-  displayName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  [fieldProp: string]: string;
-}
+import { SignUpState, HandleChange, HandleSubmit } from './sign-up.types';
+import { Container, Title } from './sign-up.styles';
 
 const initialState = signUpData.reduce(
   (res, { name }) => ({ ...res, [name]: '' }),
@@ -72,17 +57,15 @@ export const SignUp: FC = () => {
   ));
 
   return (
-    <div className={Style.container}>
-      <h2 className={Style.title}>I&nbsp;do not have a&nbsp;account</h2>
+    <Container>
+      <Title>I&nbsp;do not have a&nbsp;account</Title>
       <span>Sign up&nbsp;with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         {fieldsView}
 
-        <div className={Style.buttons}>
-          <Button type="submit">Sign up</Button>
-        </div>
+        <Button type="submit">Sign up</Button>
       </form>
-    </div>
+    </Container>
   );
 };

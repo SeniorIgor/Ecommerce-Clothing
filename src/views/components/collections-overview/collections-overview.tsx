@@ -5,7 +5,7 @@ import { CollectionPreview } from '../collection-preview';
 import { useTypedSelector } from '../../hooks';
 import { selectors } from '../../../state';
 
-import Style from './collections-overview.module.scss';
+import { Container } from './collections-overview.styled';
 
 const { selectCollectionsAsArray } = selectors.shop;
 
@@ -20,5 +20,5 @@ export const CollectionsOverview: FC = () => {
     [collections]
   );
 
-  return <div className={Style.container}>{collectionsView}</div>;
+  return <Container>{collectionsView}</Container>;
 };

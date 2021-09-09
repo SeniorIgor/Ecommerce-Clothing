@@ -4,31 +4,36 @@ import { useActions } from '../../hooks';
 
 import { CheckoutItemProps } from './checkout-item.types';
 
-import Style from './checkout-item.module.scss';
+import {
+  Container,
+  Image,
+  ImageContainer,
+  TextContainer,
+  Quantity,
+  RemoveButton,
+} from './checkout-item.styles';
 
 export const CheckoutItem: FC<CheckoutItemProps> = ({ item }) => {
   const { name, price, quantity, imageUrl } = item;
   const { addCartItem, removeCartItem, clearCartItem } = useActions();
 
   return (
-    <div className={Style.container}>
-      <div className={Style.imageContainer}>
-        <img src={imageUrl} alt="item" />
-      </div>
-      <span className={Style.name}>{name}</span>
-      <span className={Style.quantity}>
-        <div className={Style.arrow} onClick={() => removeCartItem(item)}>
+    <Container>
+      <ImageContainer>
+        <Image src={imageUrl} alt="item" />
+      </ImageContainer>
+      <TextContainer>{name}</TextContainer>
+      <Quantity>
+        <div className="arrow" onClick={() => removeCartItem(item)}>
           &#10094;
         </div>
-        <span className={Style.value}>{quantity}</span>
-        <div className={Style.arrow} onClick={() => addCartItem(item)}>
+        <span className="value">{quantity}</span>
+        <div className="arrow" onClick={() => addCartItem(item)}>
           &#10095;
         </div>
-      </span>
-      <span className={Style.price}>{price}</span>
-      <span className={Style.removeButton} onClick={() => clearCartItem(item)}>
-        &#10005;
-      </span>
-    </div>
+      </Quantity>
+      <TextContainer>{price}</TextContainer>
+      <RemoveButton onClick={() => clearCartItem(item)}>&#10005;</RemoveButton>
+    </Container>
   );
 };

@@ -5,15 +5,15 @@ import { CollectionsOverview } from '../../components/collections-overview';
 
 import { Collection } from '../collection';
 
-import Style from './shop.module.scss';
+import { Container } from './shop.styles';
 
 interface ShopProps extends RouteComponentProps {}
 
 export const Shop: FC<ShopProps> = memo(({ match }) => {
   return (
-    <div className={Style.container}>
+    <Container>
       <Route path={`${match.path}`} component={CollectionsOverview} exact />
       <Route path={`${match.path}/:collectionId`} component={Collection} />
-    </div>
+    </Container>
   );
 });
