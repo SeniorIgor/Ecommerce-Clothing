@@ -1,9 +1,4 @@
-import { Collection } from '../../../models';
-
-export interface CollectionList {
-  [key: string]: Collection;
-}
-
+import { CollectionMap } from '../../../models';
 export interface ShopState {
-  collections: CollectionList;
+  collections: CollectionMap;
 }

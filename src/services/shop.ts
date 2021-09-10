@@ -1,27 +1,17 @@
 import { firebase } from './firebase';
 
-import { DBCollectionItem } from '../models';
+import { DBCollectionItem, CollectionMap } from '../models';
 
 interface Snapshot
   extends firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData> {}
 
-export const convertCollections = (collections: Snapshot) => {
-  return collections.docs
-    .map((doc) => {
-      const { title, items } = doc.data() as DBCollectionItem;
+export const convertCollectionsToMap = (collections: Snapshot) => {
+  return collections.docs.reduce((result, doc) => {
+    const { title, items } = doc.data() as DBCollectionItem;
+    const index = title.toLowerCase();
 
-      return {
-        id: doc.id,
-        title,
-        items,
-        routeName: encodeURI(title.toLowerCase()),
-      };
-    })
-    .reduce((res, item) => {
-      // res[item.id] === item;
+    result[index] = { id: doc.id, title, items, routeName: encodeURI(index) };
 
-      return res;
-    }, {});
-
-  console.log(transformCollections);
+    return result;
+  }, {} as CollectionMap);
 };

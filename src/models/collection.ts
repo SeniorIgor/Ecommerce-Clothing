@@ -6,7 +6,7 @@ export interface CollectionItem {
 }
 
 export interface Collection {
-  id: number;
+  id: string;
   title: string;
   routeName: string;
   items: CollectionItem[];
@@ -15,4 +15,8 @@ export interface Collection {
 export interface DBCollectionItem {
   title: string;
   items: CollectionItem[];
+}
+
+export interface CollectionMap {
+  [key: string]: Collection;
 }

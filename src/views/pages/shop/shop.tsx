@@ -4,7 +4,8 @@ import { Route } from 'react-router-dom';
 import { CollectionsOverview } from '../../components/collections-overview';
 
 import { firestore } from '../../../services/firebase';
-import { convertCollections } from '../../../services/shop';
+import { convertCollectionsToMap } from '../../../services/shop';
+import { useActions } from '../../hooks';
 
 import { Collection } from '../collection';
 
@@ -12,17 +13,19 @@ import { ShopProps } from './shop.types';
 import { Container } from './shop.styles';
 
 export const Shop: FC<ShopProps> = memo(({ match }) => {
+  const { updateCollections } = useActions();
+
   useEffect(() => {
     const collectionRef = firestore.collection('collections');
 
-    collectionRef.onSnapshot(async (snapshot) => {
-      convertCollections(snapshot);
+    const unsubscribe = collectionRef.onSnapshot(async (snapshot) => {
+      const collections = convertCollectionsToMap(snapshot);
+
+      updateCollections(collections);
     });
 
-    // const unsubscribe = null;
-
-    // return () => unsubscribe();
-  }, []);
+    return () => unsubscribe();
+  }, [updateCollections]);
 
   return (
     <Container>
