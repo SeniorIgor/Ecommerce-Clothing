@@ -1,6 +1,10 @@
 import { useEffect, useContext, createContext, FC } from 'react';
 
-import { firebase, auth, createUserProfileDocument } from '../../firebase';
+import {
+  firebase,
+  auth,
+  createUserProfileDocument,
+} from '../../services/firebase';
 
 import { useActions } from './use-actions';
 

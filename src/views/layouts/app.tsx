@@ -12,7 +12,7 @@ import { NotFound } from '../pages/not-found';
 import { useTypedSelector } from '../hooks';
 import { selectors } from '../../state';
 
-import Style from './app.module.scss';
+import Style from './app.module.sass';
 
 const { selectUser } = selectors.user;
 

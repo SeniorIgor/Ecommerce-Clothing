@@ -14,7 +14,7 @@ import { AuthProvider } from './views/hooks/use-auth';
 
 import { store, persistor } from './state';
 
-import './assets/styles/index.scss';
+import './assets/styles/index.sass';
 
 ReactDOM.render(
   <React.StrictMode>

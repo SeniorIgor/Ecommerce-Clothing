@@ -11,3 +11,8 @@ export interface Collection {
   routeName: string;
   items: CollectionItem[];
 }
+
+export interface DBCollectionItem {
+  title: string;
+  items: CollectionItem[];
+}

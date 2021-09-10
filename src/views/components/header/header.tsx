@@ -1,8 +1,7 @@
-import { FC, MouseEventHandler, memo } from 'react';
+import { FC, memo } from 'react';
 
-import { auth } from '../../../firebase';
 import { selectors } from '../../../state';
-import { useTypedSelector } from '../../hooks';
+import { useTypedSelector, useAuth } from '../../hooks';
 
 import { CartIcon } from '../cart-icon';
 import { CartDropdown } from '../cart-dropdown';
@@ -20,10 +19,9 @@ const { selectCartHidden } = selectors.cart;
 const { selectUser } = selectors.user;
 
 export const Header: FC = memo(() => {
-  const handleClick: MouseEventHandler<HTMLDivElement> = () => auth.signOut();
-
   const hidden = useTypedSelector(selectCartHidden);
   const user = useTypedSelector(selectUser);
+  const { logout } = useAuth();
 
   return (
     <Container>
@@ -35,7 +33,7 @@ export const Header: FC = memo(() => {
         <OptionLink to="/shop">shop</OptionLink>
         <OptionLink to="/contact">contact</OptionLink>
         {user ? (
-          <OptionLink as="div" onClick={handleClick}>
+          <OptionLink as="div" onClick={logout}>
             Sign out
           </OptionLink>
         ) : (
