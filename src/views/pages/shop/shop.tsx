@@ -9,10 +9,10 @@ import { useActions } from '../../hooks';
 
 import { Collection } from '../collection';
 
-import { ShopProps } from './shop.types';
+import { Props } from './shop.types';
 import { Container } from './shop.styles';
 
-export const Shop: FC<ShopProps> = memo(({ match }) => {
+export const Shop: FC<Props> = memo(({ match }) => {
   const { updateCollections } = useActions();
 
   useEffect(() => {

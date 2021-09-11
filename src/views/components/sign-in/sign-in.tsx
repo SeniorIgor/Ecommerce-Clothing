@@ -2,9 +2,6 @@ import { useState, memo, FC, Fragment } from 'react';
 
 import { FormInput } from '../form-input';
 import { Button } from '../button';
-
-import { signInData } from '../../../assets/data/auth/sign-in';
-
 import { useAuth } from '../../hooks/use-auth';
 
 import {
@@ -13,9 +10,10 @@ import {
   HandleClick,
   HandleSubmit,
 } from './sign-in.types';
+import { data } from './sign-in.data';
 import { Container, Title, ButtonsContainer } from './sign-in.styles';
 
-const initialState = signInData.reduce(
+const initialState = data.reduce(
   (res, { name }) => ({ ...res, [name]: '' }),
   {} as SignInState
 );
@@ -52,7 +50,7 @@ const SignIn: FC = memo(() => {
     }
   };
 
-  const fieldsView = signInData.map(({ id, name, ...otherProps }) => (
+  const fieldsView = data.map(({ id, name, ...otherProps }) => (
     <Fragment key={id}>
       <FormInput
         name={name}

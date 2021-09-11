@@ -5,12 +5,11 @@ import { FormInput } from '../form-input';
 
 import { useAuth } from '../../hooks/use-auth';
 
-import { signUpData } from '../../../assets/data/auth/sign-up';
-
+import { data } from './sign-up.data';
 import { SignUpState, HandleChange, HandleSubmit } from './sign-up.types';
 import { Container, Title } from './sign-up.styles';
 
-const initialState = signUpData.reduce(
+const initialState = data.reduce(
   (res, { name }) => ({ ...res, [name]: '' }),
   {} as SignUpState
 );
@@ -45,7 +44,7 @@ export const SignUp: FC = () => {
     }
   };
 
-  const fieldsView = signUpData.map(({ id, name, ...otherProps }) => (
+  const fieldsView = data.map(({ id, name, ...otherProps }) => (
     <Fragment key={id}>
       <FormInput
         name={name}

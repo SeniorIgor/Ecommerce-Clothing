@@ -1,6 +1,6 @@
 import { AuthField } from '../../../models';
 
-export const signInData: AuthField[] = [
+export const data: AuthField[] = [
   {
     id: '01',
     name: 'email',
