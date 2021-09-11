@@ -5,7 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { CartItem } from '../cart-item';
 
 import { useActions, useTypedSelector } from '../../hooks';
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 
 import {
   Container,

@@ -1,4 +1,4 @@
-import { CartItem, CollectionItem } from './../../../models';
+import { CartItem, CollectionItem } from '../../../models';
 import { Types } from './types';
 
 import * as Actions from './actions';

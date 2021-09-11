@@ -3,7 +3,7 @@ import { Types } from './types';
 
 import { ShopState } from './reducers.types';
 
-const initialState: ShopState = { collections: {} };
+const initialState: ShopState = { collections: null };
 
 export const reducer = (state = initialState, action: Action): ShopState => {
   switch (action.type) {

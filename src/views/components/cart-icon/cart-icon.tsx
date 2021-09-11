@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 
 import { useActions, useTypedSelector } from '../../hooks';
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 
 import { Container, Icon, ItemCount } from './cart-icon.styles';
 

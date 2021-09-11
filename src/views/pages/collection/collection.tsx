@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 
 import { useTypedSelector } from '../../hooks';
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 
 import { NotFound } from '../not-found';
 

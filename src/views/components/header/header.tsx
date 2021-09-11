@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 import { useTypedSelector, useAuth } from '../../hooks';
 
 import { CartIcon } from '../cart-icon';

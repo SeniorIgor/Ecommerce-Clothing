@@ -4,7 +4,7 @@ import { CheckoutItem } from '../../components/checkout-item';
 import { StripeButton } from '../../components/stripe-button';
 
 import { useTypedSelector } from '../../hooks/use-typed-selector';
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 
 import { data } from './checkout.data';
 

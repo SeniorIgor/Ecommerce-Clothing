@@ -3,7 +3,7 @@ import { FC, memo } from 'react';
 import { MenuItem } from '../menu-item';
 
 import { useTypedSelector } from '../../hooks';
-import { selectors } from '../../../state';
+import { selectors } from '../../../store';
 
 import { Container } from './directory.styles';
 

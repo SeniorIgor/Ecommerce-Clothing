@@ -12,7 +12,7 @@ import { App } from './views/layouts';
 
 import { AuthProvider } from './views/hooks/use-auth';
 
-import { store, persistor } from './state';
+import { store, persistor } from './store';
 
 import './assets/styles/index.sass';
 

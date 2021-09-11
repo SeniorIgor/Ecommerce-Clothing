@@ -10,7 +10,7 @@ import { Header } from '../components/header';
 import { NotFound } from '../pages/not-found';
 
 import { useTypedSelector } from '../hooks';
-import { selectors } from '../../state';
+import { selectors } from '../../store';
 
 import Style from './app.module.sass';
 
