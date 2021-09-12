@@ -9,6 +9,11 @@ export const selectCollections = createSelector(
   (shop) => shop.collections
 );
 
+export const selectLoading = createSelector(
+  selectShopReducer,
+  (shop) => shop.isLoading
+);
+
 export const selectCollectionsAsArray = createSelector(
   selectCollections,
   (collections) => collections && Object.values(collections)
@@ -16,5 +21,5 @@ export const selectCollectionsAsArray = createSelector(
 
 export const selectCollection = (urlParam: string) =>
   createSelector(selectCollections, (collections) =>
-    collections ? collections[urlParam] : {}
+    collections ? collections[urlParam] : null
   );

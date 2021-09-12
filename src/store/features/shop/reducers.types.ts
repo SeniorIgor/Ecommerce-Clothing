@@ -1,4 +1,5 @@
 import { CollectionMap } from '../../../models';
-export interface ShopState {
+export interface State {
   collections: CollectionMap | null;
+  isLoading: boolean;
 }
