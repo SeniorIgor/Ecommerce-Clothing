@@ -21,6 +21,7 @@ export const Shop: FC<Props> = memo(({ match }) => {
           <CollectionsOverview />
         </Spinner>
       </Route>
+
       <Route path={`${match.path}/:collectionId`}>
         <Spinner isLoading={isLoading}>
           <Collection />

@@ -16,14 +16,30 @@ export const useCollections = () => {
   useEffect(() => {
     const collectionRef = firestore.collection('collections');
 
-    const unsubscribe = collectionRef.onSnapshot(async (snapshot) => {
+    collectionRef.get().then((snapshot) => {
       const collections = convertCollectionsToMap(snapshot);
-
       updateCollections(collections);
     });
-
-    return () => unsubscribe();
   }, [updateCollections]);
 
   return isLoading;
 };
+
+// export const useCollections = () => {
+//   const { updateCollections } = useActions();
+//   const isLoading = useTypedSelector(selectLoading);
+
+//   useEffect(() => {
+//     const collectionRef = firestore.collection('collections');
+
+//     const unsubscribe = collectionRef.onSnapshot(async (snapshot) => {
+//       const collections = convertCollectionsToMap(snapshot);
+
+//       updateCollections(collections);
+//     });
+
+//     return () => unsubscribe();
+//   }, [updateCollections]);
+
+//   return isLoading;
+// };
