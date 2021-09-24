@@ -1,6 +1,8 @@
 import { FC, memo } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
+import { Spinner } from '../../components/spinner';
+
 import { useTypedSelector } from '../../hooks';
 import { selectors } from '../../../store';
 
@@ -11,12 +13,21 @@ import {
   CollectionItem,
 } from './collection.styles';
 
-const { selectCollection } = selectors.shop;
+const { selectCollection, selectLoading, selectError } = selectors.shop;
 
 export const Collection: FC = memo(() => {
   const { collectionId } = useRouteMatch<{ collectionId: string }>().params;
+  const collection = useTypedSelector(selectCollection(collectionId));
+  const isLoading = useTypedSelector(selectLoading);
+  const error = useTypedSelector(selectError);
 
-  const { title, items } = useTypedSelector(selectCollection(collectionId))!;
+  if (isLoading) {
+    return <Spinner />;
+  } else if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const { title, items } = collection!;
 
   const itemsView = items.map((item) => (
     <CollectionItem item={item} key={item.id} />

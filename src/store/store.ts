@@ -13,5 +13,6 @@ const middlewares = [thunk as ThunkMiddleware<RootState, Action>];
 // }
 
 export const store = createStore(reducer, {}, applyMiddleware(...middlewares));
-
 export const persistor = persistStore(store);
+
+export type AppDispatch = typeof store.dispatch;

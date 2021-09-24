@@ -14,6 +14,11 @@ export const selectLoading = createSelector(
   (shop) => shop.isLoading
 );
 
+export const selectError = createSelector(
+  selectShopReducer,
+  (shop) => shop.error
+);
+
 export const selectCollectionsAsArray = createSelector(
   selectCollections,
   (collections) => collections && Object.values(collections)

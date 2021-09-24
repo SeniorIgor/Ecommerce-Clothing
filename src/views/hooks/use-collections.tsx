@@ -1,28 +1,13 @@
 import { useEffect } from 'react';
 
-import { firestore } from '../../services/firebase';
-import { convertCollectionsToMap } from '../../services/shop';
-import { selectors } from '../../store';
-
-import { useTypedSelector } from './use-typed-selector';
 import { useActions } from './use-actions';
 
-const { selectLoading } = selectors.shop;
-
 export const useCollections = () => {
-  const { updateCollections } = useActions();
-  const isLoading = useTypedSelector(selectLoading);
+  const { fetchCollections } = useActions();
 
   useEffect(() => {
-    const collectionRef = firestore.collection('collections');
-
-    collectionRef.get().then((snapshot) => {
-      const collections = convertCollectionsToMap(snapshot);
-      updateCollections(collections);
-    });
-  }, [updateCollections]);
-
-  return isLoading;
+    fetchCollections();
+  }, [fetchCollections]);
 };
 
 // export const useCollections = () => {
