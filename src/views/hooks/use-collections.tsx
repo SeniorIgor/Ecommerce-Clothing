@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { useActions } from './use-actions';
 
 export const useCollections = () => {
-  const { fetchCollections } = useActions();
+  const { fetchCollectionsRequest } = useActions();
 
   useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
+    fetchCollectionsRequest();
+  }, [fetchCollectionsRequest]);
 };
 
 // export const useCollections = () => {

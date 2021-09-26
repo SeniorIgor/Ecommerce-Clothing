@@ -12,7 +12,7 @@ import {
   FetchCollectionsFailure,
 } from './actions';
 
-const fetchCollectionsRequest = (): FetchCollectionsRequest => {
+export const fetchCollectionsRequest = (): FetchCollectionsRequest => {
   return {
     type: Types.FETCH_COLLECTIONS_REQUEST,
   };
