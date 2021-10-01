@@ -5,7 +5,9 @@ import { DBCollectionItem, CollectionMap } from '../models';
 interface Snapshot
   extends firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData> {}
 
-export const convertCollectionsToMap = (collections: Snapshot) => {
+export const convertCollectionsToMap = (
+  collections: Snapshot
+): CollectionMap => {
   return collections.docs.reduce((result, doc) => {
     const { title, items } = doc.data() as DBCollectionItem;
     const index = title.toLowerCase();

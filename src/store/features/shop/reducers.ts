@@ -1,15 +1,15 @@
 import { Action } from '../actions';
 import { Types } from './types';
 
-import { State } from './reducers.types';
+import { ShopState } from './reducers.types';
 
-const initialState: State = {
+const initialState: ShopState = {
   collections: null,
   isLoading: true,
   error: null,
 };
 
-export const reducer = (state = initialState, action: Action): State => {
+export const reducer = (state = initialState, action: Action): ShopState => {
   switch (action.type) {
     case Types.FETCH_COLLECTIONS_REQUEST:
       return { ...state, isLoading: true };

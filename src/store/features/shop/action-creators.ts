@@ -1,7 +1,7 @@
+import { firestore } from './../../../services/firebase';
 import { Dispatch } from 'redux';
 
 import { CollectionMap } from '../../../models';
-import { firestore } from '../../../services/firebase';
 import { convertCollectionsToMap } from '../../../services/shop';
 
 import { Types } from './types';
@@ -18,7 +18,7 @@ export const fetchCollectionsRequest = (): FetchCollectionsRequest => {
   };
 };
 
-const fetchCollectionsSuccess = (
+export const fetchCollectionsSuccess = (
   collections: CollectionMap
 ): FetchCollectionsSuccess => {
   return {
@@ -27,7 +27,9 @@ const fetchCollectionsSuccess = (
   };
 };
 
-const fetchCollectionsFailure = (error: string): FetchCollectionsFailure => {
+export const fetchCollectionsFailure = (
+  error: string
+): FetchCollectionsFailure => {
   return {
     type: Types.FETCH_COLLECTIONS_FAILURE,
     payload: error,
@@ -35,16 +37,15 @@ const fetchCollectionsFailure = (error: string): FetchCollectionsFailure => {
 };
 
 export const fetchCollections = () => (dispatch: Dispatch<Actions>) => {
-  const collectionRef = firestore.collection('collections');
-  dispatch(fetchCollectionsRequest());
-
-  collectionRef
-    .get()
-    .then((snapshot) => {
-      const collections = convertCollectionsToMap(snapshot);
-      dispatch(fetchCollectionsSuccess(collections));
-    })
-    .catch((error: Error) => {
-      dispatch(fetchCollectionsFailure(error.message));
-    });
+  // const collectionRef = firestore.collection('collections');
+  // dispatch(fetchCollectionsRequest());
+  // collectionRef
+  //   .get()
+  //   .then((snapshot: any) => {
+  //     const collections = convertCollectionsToMap(snapshot);
+  //     dispatch(fetchCollectionsSuccess(collections));
+  //   })
+  //   .catch((error: Error) => {
+  //     dispatch(fetchCollectionsFailure(error.message));
+  //   });
 };
