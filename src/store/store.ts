@@ -3,8 +3,8 @@ import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 // import logger from 'redux-logger';
 
-import { shop } from './features/saga';
-import { reducer } from './reducer';
+import { rootSaga } from './root-saga';
+import { reducer } from './root-reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,11 +14,10 @@ const middlewares = [sagaMiddleware];
 //   middlewares.push(logger);
 // }
 
-export const store = createStore(reducer, {}, applyMiddleware(...middlewares));
+const store = createStore(reducer, {}, applyMiddleware(...middlewares));
 
-const { fetchCollectionWatcher } = shop;
-sagaMiddleware.run(fetchCollectionWatcher);
+sagaMiddleware.run(rootSaga);
 
+export { store };
 export const persistor = persistStore(store);
-
 export type AppDispatch = typeof store.dispatch;

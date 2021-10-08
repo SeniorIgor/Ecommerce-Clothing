@@ -14,9 +14,7 @@ export const Router: FC<Props> = ({ user }) => {
       <Route path="/" component={Home} exact />
       <Route path="/shop" component={Shop} />
       <Route path="/checkout" component={Checkout} exact />
-      <Route path="/auth" component={Auth}>
-        {user ? <Redirect to="/" /> : <Auth />}
-      </Route>
+      <Route path="/auth">{user ? <Redirect to="/" /> : <Auth />}</Route>
 
       <Route component={NotFound} />
     </Switch>

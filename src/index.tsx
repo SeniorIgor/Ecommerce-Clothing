@@ -16,8 +16,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { App } from './app';
 
-import { AuthProvider } from './views/hooks/use-auth';
-
 import { store, persistor } from './store';
 
 import './assets/styles/index.sass';
@@ -25,13 +23,11 @@ import './assets/styles/index.sass';
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <AuthProvider>
-        <BrowserRouter>
-          <PersistGate persistor={persistor}>
-            <App />
-          </PersistGate>
-        </BrowserRouter>
-      </AuthProvider>
+      <BrowserRouter>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </BrowserRouter>
     </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,4 +1,4 @@
-import { firebase } from '../../../services/firebase';
+import { firebase } from '../../../services/firebase/firebase';
 
 import { CollectionMap, Collection } from '../../../models';
 export interface ShopState {

@@ -1,4 +1,4 @@
-import { Action } from '../actions';
+import { Action } from '../../root-action';
 
 import { DirectoryState } from './reducers.types';
 

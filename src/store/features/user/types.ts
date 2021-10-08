@@ -1,3 +1,7 @@
 export enum Types {
-  SET_CURRENT_USER = 'user/set_current_user',
+  GOOGLE_SIGN_IN_REQUEST = '@user/GOOGLE_SIGN_IN',
+  EMAIL_SIGN_IN_REQUEST = '@user/EMAIL_SIGN_IN',
+
+  SIGN_IN_SUCCESS = '@user/GOOGLE_SIGN_IN_SUCCESS',
+  SIGN_IN_FAILURE = '@user/GOOGLE_SIGN_IN_FAILURE',
 }

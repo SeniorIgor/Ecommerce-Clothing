@@ -2,14 +2,9 @@ import { useState, memo, FC, Fragment } from 'react';
 
 import { FormInput } from '../form-input';
 import { Button } from '../button';
-import { useAuth } from '../../hooks/use-auth';
+import { useActions } from '../../hooks';
 
-import {
-  SignInState,
-  HandleChange,
-  HandleClick,
-  HandleSubmit,
-} from './sign-in.types';
+import { SignInState, HandleChange, HandleSubmit } from './sign-in.types';
 import { data } from './sign-in.data';
 import { Container, Title, ButtonsContainer } from './sign-in.styles';
 
@@ -20,8 +15,7 @@ const initialState = data.reduce(
 
 const SignIn: FC = memo(() => {
   const [state, setState] = useState<SignInState>(initialState);
-
-  const auth = useAuth();
+  const { googleSignInRequest, emailSignInRequest } = useActions();
 
   const handleChange: HandleChange = (event) => {
     const { name, value } = event.target;
@@ -31,23 +25,9 @@ const SignIn: FC = memo(() => {
 
   const handleSubmit: HandleSubmit = async (event) => {
     event.preventDefault();
-
     const { email, password } = state;
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setState(initialState);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleClick: HandleClick = async () => {
-    try {
-      await auth.signInWithGoogle();
-    } catch (error) {
-      console.error(error);
-    }
+    emailSignInRequest({ email, password });
   };
 
   const fieldsView = data.map(({ id, name, ...otherProps }) => (
@@ -71,7 +51,7 @@ const SignIn: FC = memo(() => {
 
         <ButtonsContainer>
           <Button type="submit">Sign in</Button>
-          <Button type="button" onClick={handleClick} theme="google">
+          <Button type="button" onClick={googleSignInRequest} theme="google">
             Sign in with Google
           </Button>
         </ButtonsContainer>

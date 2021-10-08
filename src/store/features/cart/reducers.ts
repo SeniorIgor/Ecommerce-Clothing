@@ -1,5 +1,5 @@
 import { Types } from './types';
-import { Action } from '../actions';
+import { Action } from '../../root-action';
 
 import { changeCartItem } from './reducers.utils';
 import { CartState, ChangeHandler } from './reducers.types';

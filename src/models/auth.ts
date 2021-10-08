@@ -5,3 +5,8 @@ export interface AuthField {
   required: boolean;
   label: string;
 }
+
+export interface FieldsForAuthRequest {
+  email: string;
+  password: string;
+}

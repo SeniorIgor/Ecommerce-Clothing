@@ -1,12 +1,7 @@
-import { firestore } from './../../../services/firebase';
-import { Dispatch } from 'redux';
-
 import { CollectionMap } from '../../../models';
-import { convertCollectionsToMap } from '../../../services/shop';
 
 import { Types } from './types';
 import {
-  Actions,
   FetchCollectionsRequest,
   FetchCollectionsSuccess,
   FetchCollectionsFailure,
@@ -34,18 +29,4 @@ export const fetchCollectionsFailure = (
     type: Types.FETCH_COLLECTIONS_FAILURE,
     payload: error,
   };
-};
-
-export const fetchCollections = () => (dispatch: Dispatch<Actions>) => {
-  // const collectionRef = firestore.collection('collections');
-  // dispatch(fetchCollectionsRequest());
-  // collectionRef
-  //   .get()
-  //   .then((snapshot: any) => {
-  //     const collections = convertCollectionsToMap(snapshot);
-  //     dispatch(fetchCollectionsSuccess(collections));
-  //   })
-  //   .catch((error: Error) => {
-  //     dispatch(fetchCollectionsFailure(error.message));
-  //   });
 };
