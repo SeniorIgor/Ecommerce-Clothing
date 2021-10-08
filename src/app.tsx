@@ -1,19 +1,20 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Header } from './views/components/header';
-import { useTypedSelector } from './views/hooks';
-import { selectors } from './store';
+import { useActions } from './views/hooks';
 import { Router } from './router';
 
-const { selectUser } = selectors.user;
-
 export const App: FC = () => {
-  const user = useTypedSelector(selectUser);
+  const { checkUserSession } = useActions();
+
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
 
   return (
     <div className="wrapper">
       <Header />
-      <Router user={user} />
+      <Router />
     </div>
   );
 };

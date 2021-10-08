@@ -22,8 +22,13 @@ export interface EmailSignInRequest {
   payload: FieldsForAuthRequest;
 }
 
+export interface CheckUserSession {
+  type: Types.CHECK_USER_SESSION;
+}
+
 export type Actions =
   | GoogleSignInRequest
   | SignInSuccess
   | SignInFailure
-  | EmailSignInRequest;
+  | EmailSignInRequest
+  | CheckUserSession;

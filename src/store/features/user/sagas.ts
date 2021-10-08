@@ -10,6 +10,7 @@ import { Types } from './types';
 import {
   signInWithEmailAndPassword,
   signInWithGoogle,
+  getCurrentUser,
 } from '../../../services/auth';
 import { signInSuccess, signInFailure } from './action-creators';
 import { EmailSignInRequest } from './actions';
@@ -65,16 +66,34 @@ function* sighInWithEmail({ payload }: EmailSignInRequest) {
   }
 }
 
+function* isUserAuthenticated() {
+  try {
+    const userAuth: UserCredential = yield call(getCurrentUser);
+
+    if (!userAuth) {
+      return;
+    }
+
+    yield getUserFromAuth(userAuth);
+  } catch (err) {
+    yield put(signInFailure((err as Error).message));
+  }
+}
+
 function* googleSignInSaga() {
   yield takeLatest(Types.GOOGLE_SIGN_IN_REQUEST, sighInWithGoogle);
 }
 
-export function* emailSignInSaga() {
+function* emailSignInSaga() {
   yield takeLatest(Types.EMAIL_SIGN_IN_REQUEST, sighInWithEmail);
 }
 
+function* checkUserSessionSaga() {
+  yield takeLatest(Types.CHECK_USER_SESSION, isUserAuthenticated);
+}
+
 export function* userWatcher() {
-  const sagas = [googleSignInSaga, emailSignInSaga];
+  const sagas = [googleSignInSaga, emailSignInSaga, checkUserSessionSaga];
 
   yield all(sagas.map((s) => fork(s)));
 }

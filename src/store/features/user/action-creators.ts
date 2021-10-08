@@ -8,6 +8,7 @@ import {
   SignInSuccess,
   SignInFailure,
   EmailSignInRequest,
+  CheckUserSession,
 } from './actions';
 
 export const googleSignInRequest = (): GoogleSignInRequest => {
@@ -36,5 +37,11 @@ export const emailSignInRequest = (
   return {
     type: Types.EMAIL_SIGN_IN_REQUEST,
     payload: signInData,
+  };
+};
+
+export const checkUserSession = (): CheckUserSession => {
+  return {
+    type: Types.CHECK_USER_SESSION,
   };
 };
