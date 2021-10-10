@@ -30,6 +30,9 @@ export const reducer = (state = initialState, action: Action): CartState => {
     case Types.CLEAR_CART_ITEM:
       return changeItem(state, action.payload, -action.payload.quantity);
 
+    case Types.CLEAR_CART:
+      return { ...state, items: [] };
+
     default:
       return state;
   }

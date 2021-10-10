@@ -2,6 +2,7 @@ import { FC, memo } from 'react';
 
 import { selectors } from '../../../store';
 import { useTypedSelector } from '../../hooks';
+import { useActions } from '../../hooks';
 
 import { CartIcon } from '../cart-icon';
 import { CartDropdown } from '../cart-dropdown';
@@ -21,6 +22,7 @@ const { selectUser } = selectors.user;
 export const Header: FC = memo(() => {
   const hidden = useTypedSelector(selectCartHidden);
   const user = useTypedSelector(selectUser);
+  const { signOutRequest } = useActions();
   // const { logout } = useAuth();
 
   return (
@@ -33,10 +35,7 @@ export const Header: FC = memo(() => {
         <OptionLink to="/shop">shop</OptionLink>
         <OptionLink to="/contact">contact</OptionLink>
         {user ? (
-          <OptionLink
-            as="div"
-            // onClick={logout}
-          >
+          <OptionLink as="div" onClick={signOutRequest}>
             Sign out
           </OptionLink>
         ) : (

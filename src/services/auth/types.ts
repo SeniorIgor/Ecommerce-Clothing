@@ -2,12 +2,8 @@ import { firebase } from '../firebase/firebase';
 
 export type CreateUser = (
   email: string,
-  password: string,
-  displayName: string
-) => Promise<
-  | firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
-  | undefined
->;
+  password: string
+) => Promise<firebase.auth.UserCredential>;
 
 export type SignIn = (
   email: string,

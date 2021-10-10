@@ -21,8 +21,13 @@ export interface ClearCartItem {
   payload: CartItem;
 }
 
+export interface ClearCart {
+  type: Types.CLEAR_CART;
+}
+
 export type Actions =
   | ToggleCartHidden
   | AddCartItem
   | RemoveCartItem
-  | ClearCartItem;
+  | ClearCartItem
+  | ClearCart;

@@ -1,6 +1,8 @@
 export enum Types {
-  TOGGLE_CART_HIDDEN = 'cart/toggle_cart_hidden',
-  ADD_CART_ITEM = 'cart/add_cart_item',
-  REMOVE_CART_ITEM = 'cart/remove_cart_item',
-  CLEAR_CART_ITEM = 'cart/clear_cart_item',
+  TOGGLE_CART_HIDDEN = '@cart/TOGGLE_CART_HIDDEN',
+  ADD_CART_ITEM = '@cart/ADD_CART_ITEM',
+  REMOVE_CART_ITEM = '@cart/REMOVE_CART_ITEM',
+  CLEAR_CART_ITEM = '@cart/CLEAR_CART_ITEM',
+
+  CLEAR_CART = '@card/CLEAR_CART',
 }

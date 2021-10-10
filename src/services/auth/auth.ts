@@ -1,8 +1,4 @@
-import {
-  firebase,
-  auth,
-  createUserProfileDocument,
-} from '../firebase/firebase';
+import { firebase, auth } from '../firebase/firebase';
 
 import { SignIn, SignInWithGoogle, Logout, CreateUser } from './types';
 
@@ -10,14 +6,8 @@ export const signInWithEmailAndPassword: SignIn = (email, password) => {
   return auth.signInWithEmailAndPassword(email, password);
 };
 
-export const createUserWithEmailAndPassword: CreateUser = async (
-  email,
-  password,
-  displayName
-) => {
-  const { user } = await auth.createUserWithEmailAndPassword(email, password);
-
-  return createUserProfileDocument(user!, { displayName });
+export const createUserWithEmailAndPassword: CreateUser = (email, password) => {
+  return auth.createUserWithEmailAndPassword(email, password);
 };
 
 export const signInWithGoogle: SignInWithGoogle = () => {

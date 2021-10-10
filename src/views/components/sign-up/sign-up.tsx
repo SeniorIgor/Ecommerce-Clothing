@@ -2,6 +2,7 @@ import { useState, FC, Fragment } from 'react';
 
 import { Button } from '../button';
 import { FormInput } from '../form-input';
+import { useActions } from '../../hooks';
 
 import { data } from './sign-up.data';
 import { SignUpState, HandleChange, HandleSubmit } from './sign-up.types';
@@ -14,6 +15,7 @@ const initialState = data.reduce(
 
 export const SignUp: FC = () => {
   const [state, setState] = useState<SignUpState>(initialState);
+  const { signUpRequest } = useActions();
 
   const handleChange: HandleChange = (event) => {
     const { name, value } = event.target;
@@ -23,19 +25,18 @@ export const SignUp: FC = () => {
 
   const handleSubmit: HandleSubmit = async (event) => {
     event.preventDefault();
-
     const { displayName, email, password, confirmPassword } = state;
 
     if (password !== confirmPassword) {
-      console.log("passwords don't match");
+      alert("Passwords don't match");
       return;
     }
 
-    try {
-      setState(initialState);
-    } catch (error) {
-      console.error(error);
-    }
+    signUpRequest({
+      displayName,
+      email,
+      password,
+    });
   };
 
   const fieldsView = data.map(({ id, name, ...otherProps }) => (

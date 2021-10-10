@@ -6,7 +6,17 @@ export interface AuthField {
   label: string;
 }
 
-export interface FieldsForAuthRequest {
+export interface FieldsForSignInRequest {
   email: string;
   password: string;
+}
+
+export interface SignUpCredentials {
+  displayName: string;
+  email: string;
+  password: string;
+}
+
+export interface SignUpFields extends SignUpCredentials {
+  confirmPassword: string;
 }

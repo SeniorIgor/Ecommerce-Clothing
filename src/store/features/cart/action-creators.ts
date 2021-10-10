@@ -31,3 +31,9 @@ export const clearCartItem = (item: CartItem): Actions.ClearCartItem => {
     payload: item,
   };
 };
+
+export const clearCart = (): Actions.ClearCart => {
+  return {
+    type: Types.CLEAR_CART,
+  };
+};

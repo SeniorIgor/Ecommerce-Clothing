@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, fork, put, all } from 'redux-saga/effects';
 
 import { convertCollectionsToMap } from './../../../services/shop';
 import { firestore } from '../../../services/firebase/firebase';
@@ -25,6 +25,12 @@ function* fetchCollectionRequest() {
   }
 }
 
-export function* fetchCollectionWatcher() {
+function* fetchCollectionWatcher() {
   yield takeLatest(Types.FETCH_COLLECTIONS_REQUEST, fetchCollectionRequest);
+}
+
+export function* shopWatcher() {
+  const sagas = [fetchCollectionWatcher];
+
+  yield all(sagas.map((s) => fork(s)));
 }
