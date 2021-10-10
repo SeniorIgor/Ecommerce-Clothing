@@ -1,5 +1,5 @@
 import { FC, memo, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, useRouteMatch } from 'react-router-dom';
 
 import { CollectionsOverview } from '../../components/collections-overview';
 
@@ -7,15 +7,13 @@ import { useActions } from '../../hooks';
 
 import { Collection } from '../collection';
 
-import { Props } from './shop.types';
 import { Container } from './shop.styles';
 
-export const Shop: FC<Props> = memo(({ match }) => {
+export const Shop: FC = memo(() => {
   const { fetchCollectionsRequest } = useActions();
+  const match = useRouteMatch();
 
   useEffect(() => {
-    console.log('useEffect');
-
     fetchCollectionsRequest();
   }, [fetchCollectionsRequest]);
 

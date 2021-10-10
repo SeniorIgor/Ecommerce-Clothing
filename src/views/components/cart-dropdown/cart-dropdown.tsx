@@ -28,7 +28,6 @@ const scrollBarProps = {
 export const CartDropdown: FC = memo(() => {
   const items = useTypedSelector(selectCartItems);
   const { toggleCartHidden } = useActions();
-
   const history = useHistory();
 
   const handleClick: HandleClick = () => {

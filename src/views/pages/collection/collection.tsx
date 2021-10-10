@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Spinner } from '../../components/spinner';
 
@@ -16,7 +16,7 @@ import {
 const { selectCollection, selectLoading, selectError } = selectors.shop;
 
 export const Collection: FC = memo(() => {
-  const { collectionId } = useRouteMatch<{ collectionId: string }>().params;
+  const { collectionId } = useParams<{ collectionId: string }>();
   const collection = useTypedSelector(selectCollection(collectionId));
   const isLoading = useTypedSelector(selectLoading);
   const error = useTypedSelector(selectError);
