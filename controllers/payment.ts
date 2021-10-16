@@ -1,7 +1,9 @@
 import { RequestHandler } from 'express';
+import Stripe from 'stripe';
 
-const config = require('../config');
-const stripe = require('stripe')(config.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+  apiVersion: '2020-08-27',
+});
 
 interface MakePaymentRequestBody {
   token: {
@@ -18,15 +20,16 @@ export const makePayment: RequestHandler = (req, res, next) => {
     currency: 'usd',
   };
 
-  stripe.charges.create(body, (stripeErr: Error, stripeRes: string) => {
-    if (stripeErr) {
-      res.status(500).send({
-        message: stripeErr,
-      });
-    } else {
+  stripe.charges
+    .create(body)
+    .then((stripeRes) => {
       res.status(200).send({
         message: stripeRes,
       });
-    }
-  });
+    })
+    .catch((stripeErr) => {
+      res.status(500).send({
+        message: stripeErr,
+      });
+    });
 };
