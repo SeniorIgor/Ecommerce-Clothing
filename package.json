@@ -12,7 +12,7 @@
     "server": "nodemon -r dotenv/config server.ts",
     "build": "tsc && cd client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "cd dist && node server.js",
+    "start": "node dist/server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
