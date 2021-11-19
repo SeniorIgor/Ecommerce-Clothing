@@ -23,13 +23,14 @@ import { App } from './app';
 
 import { store, persistor } from './store';
 
-import './assets/styles/index.sass';
+import { GlobalStyle } from './global.styles';
 
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
+          <GlobalStyle />
           <App />
         </PersistGate>
       </BrowserRouter>
