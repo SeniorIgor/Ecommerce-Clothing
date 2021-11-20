@@ -1,15 +1,15 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useEffect, lazy } from 'react';
 import { Route, useRouteMatch } from 'react-router-dom';
 
-import { CollectionsOverview } from '../../components/collections-overview';
-
 import { useActions } from '../../hooks';
-
-import { Collection } from '../collection';
-
 import { Container } from './shop.styles';
 
-export const Shop: FC = memo(() => {
+const CollectionsOverview = lazy(
+  () => import('../../components/collections-overview')
+);
+const Collection = lazy(() => import('../collection'));
+
+const Shop: FC = memo(() => {
   const { fetchCollectionsRequest } = useActions();
   const match = useRouteMatch();
 
@@ -24,3 +24,5 @@ export const Shop: FC = memo(() => {
     </Container>
   );
 });
+
+export default Shop;

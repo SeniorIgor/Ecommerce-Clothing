@@ -5,7 +5,7 @@ import { SignUp } from '../../components/sign-up';
 
 import { Container } from './auth.styles';
 
-export const Auth: React.FC = () => {
+const Auth: React.FC = () => {
   return (
     <Container>
       <SignIn />
@@ -13,3 +13,5 @@ export const Auth: React.FC = () => {
     </Container>
   );
 };
+
+export default Auth;

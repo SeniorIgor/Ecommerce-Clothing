@@ -20,6 +20,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { App } from './app';
+import ErrorBoundary from './views/components/error-boundary';
 
 import { store, persistor } from './store';
 
@@ -30,8 +31,10 @@ ReactDOM.render(
     <ReduxProvider store={store}>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
-          <GlobalStyle />
-          <App />
+          <ErrorBoundary>
+            <GlobalStyle />
+            <App />
+          </ErrorBoundary>
         </PersistGate>
       </BrowserRouter>
     </ReduxProvider>

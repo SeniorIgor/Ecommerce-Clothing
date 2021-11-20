@@ -18,7 +18,7 @@ import {
 
 const { selectCartItems, selectCartTotal } = selectors.cart;
 
-export const Checkout: FC = memo(() => {
+const Checkout: FC = memo(() => {
   const items = useTypedSelector(selectCartItems);
   const total = useTypedSelector(selectCartTotal);
 
@@ -50,3 +50,5 @@ export const Checkout: FC = memo(() => {
     </Container>
   );
 });
+
+export default Checkout;

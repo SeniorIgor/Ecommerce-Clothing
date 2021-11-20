@@ -11,7 +11,7 @@ import { Container } from './collections-overview.styled';
 
 const { selectCollectionsAsArray, selectLoading, selectError } = selectors.shop;
 
-export const CollectionsOverview: FC<Props> = memo(({ className }) => {
+const CollectionsOverview: FC<Props> = memo(({ className }) => {
   const collections = useTypedSelector(selectCollectionsAsArray);
   const isLoading = useTypedSelector(selectLoading);
   const error = useTypedSelector(selectError);
@@ -28,3 +28,5 @@ export const CollectionsOverview: FC<Props> = memo(({ className }) => {
 
   return <Container className={className}>{collectionsView}</Container>;
 });
+
+export default CollectionsOverview;

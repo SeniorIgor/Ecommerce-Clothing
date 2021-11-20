@@ -15,7 +15,7 @@ import {
 
 const { selectCollection, selectLoading, selectError } = selectors.shop;
 
-export const Collection: FC = memo(() => {
+const Collection: FC = memo(() => {
   const { collectionId } = useParams<{ collectionId: string }>();
   const collection = useTypedSelector(selectCollection(collectionId));
   const isLoading = useTypedSelector(selectLoading);
@@ -40,3 +40,5 @@ export const Collection: FC = memo(() => {
     </Container>
   );
 });
+
+export default Collection;

@@ -1,23 +1,36 @@
-import { FC } from 'react';
+import { FC, lazy, Suspense } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import { Home, Auth, Checkout, NotFound, Shop } from './views/pages';
 import { useTypedSelector } from './views/hooks';
 import { selectors } from './store';
+import { Spinner } from './views/components/spinner';
+import ErrorBoundary from './views/components/error-boundary';
 
 const { selectUser } = selectors.user;
+
+const HomePage = lazy(() => import('./views/pages/home'));
+const AuthPage = lazy(() => import('./views/pages/auth'));
+const CheckoutPage = lazy(() => import('./views/pages/checkout'));
+const NotFoundPage = lazy(() => import('./views/pages/not-found'));
+const ShopPage = lazy(() => import('./views/pages/shop'));
 
 export const Router: FC = () => {
   const user = useTypedSelector(selectUser);
 
   return (
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/shop" component={Shop} />
-      <Route path="/checkout" component={Checkout} exact />
-      <Route path="/auth">{user ? <Redirect to="/" /> : <Auth />}</Route>
+    <ErrorBoundary>
+      <Switch>
+        <Suspense fallback={<Spinner />}>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/shop" component={ShopPage} />
+          <Route path="/checkout" component={CheckoutPage} exact />
+          <Route path="/auth">
+            {user ? <Redirect to="/" /> : <AuthPage />}
+          </Route>
 
-      <Route component={NotFound} />
-    </Switch>
+          <Route component={NotFoundPage} />
+        </Suspense>
+      </Switch>
+    </ErrorBoundary>
   );
 };
