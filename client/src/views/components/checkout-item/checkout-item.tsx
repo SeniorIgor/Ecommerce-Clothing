@@ -9,6 +9,7 @@ import {
   Image,
   ImageContainer,
   TextContainer,
+  PriceContainer,
   Quantity,
   RemoveButton,
 } from './checkout-item.styles';
@@ -32,7 +33,7 @@ export const CheckoutItem: FC<CheckoutItemProps> = ({ item }) => {
           &#10095;
         </div>
       </Quantity>
-      <TextContainer>{price}</TextContainer>
+      <PriceContainer>{price}</PriceContainer>
       <RemoveButton onClick={() => clearCartItem(item)}>&#10005;</RemoveButton>
     </Container>
   );

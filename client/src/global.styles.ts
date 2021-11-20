@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   .wrapper {
     padding: 20px 60px;
 
-    @media screen and (max-width: 1023px) {
+    @media screen and (max-width: 800px) {
       padding: 10px;
     }
   }

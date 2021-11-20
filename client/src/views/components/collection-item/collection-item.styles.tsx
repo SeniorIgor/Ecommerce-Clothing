@@ -23,6 +23,13 @@ export const Button = styled(CustomButton)`
   top: 255px;
   width: 80%;
   opacity: 0.7;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    padding: 0 10px;
+    opacity: 0.9;
+    min-width: unset;
+  }
 `;
 
 export const Container = styled.div`
@@ -41,6 +48,20 @@ export const Container = styled.div`
     ${Button} {
       display: flex;
       opacity: 0.85;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+
+    &:hover {
+      ${Image} {
+        opacity: unset;
+      }
+
+      ${Button} {
+        opacity: unset;
+      }
     }
   }
 `;

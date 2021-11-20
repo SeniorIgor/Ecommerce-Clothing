@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -23,6 +27,18 @@ export const HeaderColumn = styled.div`
 
   &:last-child {
     width: 8%;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+
+    &:nth-last-child(2) {
+      width: 12%;
+    }
+
+    &:last-child {
+      width: 12%;
+    }
   }
 `;
 

@@ -33,6 +33,10 @@ export const Container = styled.div<ContainerProps>`
   &:last-child {
     margin-left: 7.5px;
   }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+  }
 `;
 
 export const Background = styled.div<ImageProps>`
