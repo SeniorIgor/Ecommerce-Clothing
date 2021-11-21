@@ -34,7 +34,7 @@ export const Button = styled(CustomButton)`
 
 export const Container = styled.div`
   position: relative;
-  width: 22vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -51,8 +51,8 @@ export const Container = styled.div`
     }
   }
 
-  @media screen and (max-width: 800px) {
-    width: 40vw;
+  @media screen and (max-width: 1023px) {
+    width: 100%;
 
     &:hover {
       ${Image} {

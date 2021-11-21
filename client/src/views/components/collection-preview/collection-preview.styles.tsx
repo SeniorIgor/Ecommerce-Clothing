@@ -19,9 +19,9 @@ export const Title = styled.h1`
 export const Preview = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 15px;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 900px) {
     grid-template-columns: 1fr 1fr;
   }
 `;
