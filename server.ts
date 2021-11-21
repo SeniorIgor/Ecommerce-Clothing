@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { json, urlencoded } from 'body-parser';
 import path from 'path';
+import compression from 'compression';
 
 import paymentRoute from './routes/payment';
 
@@ -8,6 +9,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const prod = process.env.NODE_ENV === 'production';
 
+app.use(compression());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
