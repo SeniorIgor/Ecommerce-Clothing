@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { json, urlencoded } from 'body-parser';
 import path from 'path';
 import compression from 'compression';
+import enforce from 'express-sslify';
 
 import paymentRoute from './routes/payment';
 
@@ -12,16 +13,19 @@ const prod = process.env.NODE_ENV === 'production';
 app.use(compression());
 app.use(json());
 app.use(urlencoded({ extended: true }));
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(
-    express.static(path.join(__dirname, `${prod ? '../' : ''}client/build`))
-  );
+if (prod) {
+  const filesPath = '../client/build';
+
+  app.use(express.static(path.join(__dirname, filesPath)));
+
+  app.get('/service-worker.js', (_, res) => {
+    res.sendFile(path.join(__dirname, filesPath, 'service-worker.js'));
+  });
 
   app.get('*', function (_, res) {
-    res.sendFile(
-      path.join(__dirname, `${prod ? '../' : ''}client/build/index.html`)
-    );
+    res.sendFile(path.join(__dirname, filesPath, 'index.html'));
   });
 }
 

@@ -18,11 +18,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
 import { App } from './app';
 import ErrorBoundary from './views/components/error-boundary';
-
 import { store, persistor } from './store';
+import * as serviceWorker from './serviceWorkerRegistration';
 
 import { GlobalStyle } from './global.styles';
 
@@ -41,3 +40,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorker.register();
