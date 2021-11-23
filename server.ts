@@ -10,14 +10,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 const prod = process.env.NODE_ENV === 'production';
 
-app.use(compression());
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 if (prod) {
   const filesPath = '../client/build';
 
+  app.use(compression());
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, filesPath)));
 
   app.get('/service-worker.js', (_, res) => {
