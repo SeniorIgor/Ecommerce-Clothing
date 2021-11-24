@@ -26,11 +26,8 @@ function* checkCartFromDatabaseWorker({ payload }: SignInSuccess) {
 
     const data = cartSnapshot.data();
 
-    if (data && data.cartItems.length) {
+    if (data) {
       yield put(setCartItems(data.cartItems));
-    } else {
-      const cartItems: Array<CartItem> = yield select(selectCartItems);
-      yield cartRef.update({ cartItems });
     }
   } catch (err) {
     console.log('Error:', (err as Error).message);
