@@ -1,6 +1,6 @@
-import { firebase } from './firebase/firebase';
+import { firebase } from '../firebase/firebase';
 
-import { DBCollectionItem, CollectionMap } from '../models';
+import { DBCollectionItem, CollectionMap } from '../../models';
 
 interface Snapshot
   extends firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData> {}

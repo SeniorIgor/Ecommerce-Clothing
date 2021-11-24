@@ -21,6 +21,11 @@ export interface ClearCartItem {
   payload: CartItem;
 }
 
+export interface SetCartItems {
+  type: Types.SET_CART_ITEMS;
+  payload: Array<CartItem>;
+}
+
 export interface ClearCart {
   type: Types.CLEAR_CART;
 }
@@ -30,4 +35,5 @@ export type Actions =
   | AddCartItem
   | RemoveCartItem
   | ClearCartItem
+  | SetCartItems
   | ClearCart;

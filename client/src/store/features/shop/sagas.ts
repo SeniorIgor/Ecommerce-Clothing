@@ -1,7 +1,7 @@
 import { takeLatest, call, fork, put, all } from 'redux-saga/effects';
 
-import { convertCollectionsToMap } from './../../../services/shop';
-import { firestore } from '../../../services/firebase/firebase';
+import { convertCollectionsToMap } from '../../../services/shop';
+import { firestore } from '../../../services/firebase';
 import { CollectionSnapshot } from './reducers.types';
 import { CollectionMap } from './../../../models';
 import { Types } from './types';

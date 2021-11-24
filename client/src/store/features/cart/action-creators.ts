@@ -32,6 +32,13 @@ export const clearCartItem = (item: CartItem): Actions.ClearCartItem => {
   };
 };
 
+export const setCartItems = (items: Array<CartItem>): Actions.SetCartItems => {
+  return {
+    type: Types.SET_CART_ITEMS,
+    payload: items,
+  };
+};
+
 export const clearCart = (): Actions.ClearCart => {
   return {
     type: Types.CLEAR_CART,

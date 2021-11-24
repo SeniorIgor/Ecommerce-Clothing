@@ -1,6 +1,6 @@
 import { Types } from './types';
 
-import { User } from '../../../models/user';
+import { User } from '../../../models';
 import {
   FieldsForSignInRequest,
   SignUpCredentials,

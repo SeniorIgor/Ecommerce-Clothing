@@ -4,10 +4,12 @@ import storage from 'redux-persist/lib/storage';
 
 import * as reducers from './features/reducers';
 
+const whitelist: Array<keyof typeof reducers> = ['cart'];
+
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart'],
+  whitelist,
 };
 
 const rootReducer = combineReducers(reducers);
