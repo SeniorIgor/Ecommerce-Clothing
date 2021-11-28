@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "dependencies": {
     "axios": "^0.23.0",
     "classnames": "^2.3.1",
@@ -40,6 +45,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/enzyme": "^3.10.10",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.19",
     "@types/react": "^16.14.14",
@@ -47,7 +53,10 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/redux-logger": "^3.0.9",
     "@types/redux-saga": "^0.10.5",
-    "@types/styled-components": "^5.1.14"
+    "@types/styled-components": "^5.1.14",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2"
   },
   "scripts": {
     "start": "set PORT=4200 && react-scripts start",
