@@ -4,12 +4,12 @@ import { Action } from '../../root-action';
 import { changeCartItem } from './reducers.utils';
 import { CartState, ChangeHandler } from './reducers.types';
 
-const initialState: CartState = {
+export const initialState: CartState = {
   hidden: true,
   items: [],
 };
 
-const changeItem: ChangeHandler = (state, newItem, count) => {
+export const changeItem: ChangeHandler = (state, newItem, count) => {
   return {
     ...state,
     items: changeCartItem(state.items, newItem, count),

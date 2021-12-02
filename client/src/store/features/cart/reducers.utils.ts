@@ -19,5 +19,9 @@ export const changeCartItem: ChangeCartItem = (items, newItem, count = 1) => {
       .filter((item) => item.quantity > 0);
   }
 
+  if (count < 0) {
+    return items;
+  }
+
   return [...items, { ...newItem, quantity: 1 }];
 };

@@ -2,7 +2,7 @@ import { Action } from '../../root-action';
 
 import { DirectoryState } from './reducers.types';
 
-const initialState: DirectoryState = {
+export const initialState: DirectoryState = {
   sections: [
     {
       id: 1,

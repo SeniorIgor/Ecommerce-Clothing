@@ -3,7 +3,7 @@ import { Types } from './types';
 
 import { ShopState } from './reducers.types';
 
-const initialState: ShopState = {
+export const initialState: ShopState = {
   collections: null,
   isLoading: true,
   error: null,

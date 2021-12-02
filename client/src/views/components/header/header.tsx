@@ -1,8 +1,7 @@
 import { FC, memo } from 'react';
 
 import { selectors } from '../../../store';
-import { useTypedSelector } from '../../hooks';
-import { useActions } from '../../hooks';
+import { useTypedSelector, useActions } from '../../hooks';
 
 import { CartIcon } from '../cart-icon';
 import { CartDropdown } from '../cart-dropdown';
@@ -23,7 +22,6 @@ export const Header: FC = memo(() => {
   const hidden = useTypedSelector(selectCartHidden);
   const user = useTypedSelector(selectUser);
   const { signOutRequest } = useActions();
-  // const { logout } = useAuth();
 
   return (
     <Container>

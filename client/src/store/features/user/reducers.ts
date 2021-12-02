@@ -9,7 +9,7 @@ interface UserState {
   error: string | null;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,

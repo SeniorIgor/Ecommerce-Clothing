@@ -19,7 +19,7 @@ export const CollectionPreview: FC<CollectionPreviewProps> = memo(
     return (
       <Container>
         <Title>{title}</Title>
-        <Preview>{preview}</Preview>
+        <Preview role="list">{preview}</Preview>
       </Container>
     );
   }

@@ -7,11 +7,6 @@
  *  https://www.taniarascia.com/react-architecture-directory-structure/
  */
 
-/**
- *  1. Товары из корзина удаляются и больше их невозможно посмотреть пользователю
- *  2. Как запускать оплату в production mode
- */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 

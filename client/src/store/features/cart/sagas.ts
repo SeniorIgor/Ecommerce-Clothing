@@ -79,9 +79,3 @@ export function* cartWatcher() {
 
   yield all(sagas.map((s) => fork(s)));
 }
-
-/**
- *  1. Если пользователь прошел авторизацию => обновляем корзину в database из local-state
- *  2. Если пользователь авторизован => обновляем корзину в database из local-state
- *  3. После выхода пользователя => очищаем local-storage и local-state
- */
