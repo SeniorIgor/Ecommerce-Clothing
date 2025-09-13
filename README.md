@@ -2,7 +2,7 @@
 
 A full‑stack e‑commerce clothing shop built with **React/Redux (TypeScript)** on the frontend and **Node/Express (TypeScript)** on the backend. The project integrates **Firebase** (authentication, persistence) and **Stripe** (secure payments).
 
-**Live Demo:** [https://ecom-clothing-shop.herokuapp.com/](https://ecom-clothing-shop.herokuapp.com/) _(Stripe test mode, Firebase auth)_
+**Live Demo:** [https://ecom-clothing-shop.herokuapp.com/](https://ecom-clothing-shop.herokuapp.com/)
 
 ---
 
@@ -52,7 +52,7 @@ routes/             # API routes (payments, products)
 
 ## Setup
 
-**Requirements:** Node 14+, npm 6+
+**Requirements:** Node 14, npm 6
 
 ```bash
 # install dependencies
